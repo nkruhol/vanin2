@@ -1,0 +1,34 @@
+<div class="participants-container row">
+  <div class="col-12">
+    <h3>Список участников</h3>
+
+    <div class="spinner-border spinner-lg spinner-center spminner-top--200" role="status"
+      *ngIf="true || (state$ | async) == State.LOADING">
+      <span class="visually-hidden"></span>
+    </div>
+
+    <table class="table"
+      *ngIf="(state$ | async) == State.DATA">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col" width="10%">Авторы</th>
+          <th scope="col" width="25%">Название доклада</th>
+          <th scope="col" width="15%">Организация</th>
+          <th scope="col">Анотация</th>
+          <th scope="col" width="15%">Контактная информация</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of (participants$ | async); index as index$">
+          <td>{{ index$ + 1 }}</td>
+          <td>{{ row.coAuthors }}</td>
+          <td>{{ row.articleName }}</td>
+          <td>{{ row.organization }}</td>
+          <td>{{ row.description }}</td>
+          <td>{{ row.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

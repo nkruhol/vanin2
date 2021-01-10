@@ -1,1 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+input.ng-touched.ng-invalid {
+  border-color: red;
+}
+
+textarea.ng-touched.ng-invalid {
+  border-color: red;
+}
+
+.toast-body {
+  a {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+}
+
+body {
+  background-image: url(./assets/images/body.png);
+  background-repeat: repeat;
+}
+
+.spinner-lg {
+  height: 10rem;
+  width: 10rem;
+}
+.spinner-lg.spinner-center {
+  position: relative;
+  left: 50%;
+  margin-left: -5rem
+}
+
+.spinner-sm {
+  height: 1rem;
+  width: 1rem;
+}
+.spinner-sm.spinner-center {
+  position: relative;
+  left: 50%;
+  margin-left: -0.5rem
+}
+
+.spinner-top--200 {
+  top: 200px;
+}
+
+.form-select {
+  display: block;
+  width: 100%;
+  padding: .375rem 1.75rem .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  vertical-align: middle;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-size: 16px 12px;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e")
+}
