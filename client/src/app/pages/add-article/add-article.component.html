@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-8">
+    <h3>Загрузка статьи</h3>
+    <p>
+      Для загрузки статьи необходимо выполнить следующие шаги:
+    </p>
+    <ul>
+      <li>Введите свой email адрес, и нажмите кнопку проверить.</li>
+      <li>Из списка статей, которые прикреплены к вашему email-адресу, выберете текущую</li>
+      <li>Загрузите статью</li>
+    </ul>
+    <form [formGroup]="checkForm"
+      novalidate
+      (submit)="checkEmail()">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email"
+          class="form-control"
+          id="email"
+          formControlName="email">
+      </div>
+      <button type="submit"
+        [disabled]="checkForm.invalid"
+        class="btn btn-primary">Найти Статьи</button>
+    </form>
+  </div>
+  <div class="col-2"></div>
+</div>
+
+<div class="row"
+  *ngIf="(state$ | async) == State.LOADING">
+  <div class="col-6"></div>
+  <div class="col-6">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden"></span>
+    </div>
+  </div>
+</div>
+
+<div class="row document-container"
+  *ngIf="true || (state$ | async) == State.DATA">
+  <div class="col-2"></div>
+  <div class="col-8">
+    <form [formGroup]="documentForm">
+      <div class="md-3 articles">
+        <label>Для введенного адреса доступны следующие статьи. Выберите ту, к которой вы хотите прикрепить документ</label>
+        <div class="form-check"
+          *ngFor="let a of participants$ | async">
+          <input class="form-check-input"
+            type="radio"
+            formControlName="articleId"
+            [id]="a.id"
+            [value]="a.id">
+          <label class="form-check-label" [for]="a.id">
+            <b>{{ a.articleName }}</b>&nbsp;/&nbsp;<span>{{ a.coAuthors }}</span>
+          </label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="file" class="form-label">Choose File</label>
+        <input type="file"
+          (change)="fileChanged($event)"/>
+      </div>
+    </form>
+  </div>
+  <div class="col-2"></div>
+</div>

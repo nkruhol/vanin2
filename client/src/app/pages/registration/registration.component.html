@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-8">
+
+    <div class="alert alert-success" role="alert"
+      *ngIf="(state$ | async) == State.SAVED">
+      Вы зарегестрированы для участия в конференции!
+    </div>
+
+    <div class="alert alert-danger" role="alert"
+      *ngIf="(state$ | async) == State.ERROR">
+      Ошибка! Попробуйте позже!
+    </div>
+
+    <h3>Форма регистрации учасника конференции</h3>
+    <form [formGroup]="registrationForm"
+      novalidate
+      (submit)="registration()">
+      <div class="mb-3">
+        <label for="firstName" class="form-label">Имя</label>
+        <input type="text"
+          class="form-control"
+          id="firstName"
+          formControlName="firstName">
+      </div>
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Фамилия</label>
+        <input type="text"
+          class="form-control"
+          id="lastName"
+          formControlName="lastName">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email"
+          class="form-control"
+          id="email"
+          formControlName="email">
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Контактный телефон</label>
+        <input type="phone"
+          class="form-control"
+          id="phone"
+          formControlName="phone">
+      </div>
+      <div class="mb-3">
+        <label for="articleName" class="form-label">Название доклада</label>
+        <textarea
+          class="form-control"
+          id="artivleName"
+          formControlName="articleName">
+        </textarea>
+      </div>
+      <div class="mb-3">
+        <label for="orgqnization" class="form-label">Организация</label>
+        <input type="text"
+          class="form-control"
+          id="orgqnization"
+          formControlName="organization">
+      </div>
+      <div class="mb-3">
+        <label for="coAuthors" class="form-label">Все соавторы (в виде Иванов И.И., включая основного автора)</label>
+        <textarea
+          class="form-control"
+          id="coAuthors"
+          formControlName="coAuthors">
+        </textarea>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Короткая анотация</label>
+        <textarea
+          class="form-control"
+          id="description"
+          rows="5"
+          formControlName="description">
+        </textarea>
+      </div>
+
+      <div class="md-3">
+        <re-captcha
+          (resolved)="resolved($event)"
+          siteKey="6LfRuyYaAAAAAC-Fh8cFC_BuWb8iwyeh9Ewea7YN">
+        </re-captcha>
+      </div>
+
+      <button type="submit"
+        [disabled]="registrationForm.invalid
+          || !notRobot
+          || (state$ | async) == State.SAVING
+          || (state$ | async) == State.SAVED"
+        class="btn btn-primary">
+          Submit
+          <div class="spinner-border spinner-sm" role="status"
+            *ngIf="(state$ | async) == State.SAVING">
+            <span class="visually-hidden"></span>
+          </div>
+      </button>
+
+    </form>
+  </div>
+  <div class="col-2"></div>
+</div>

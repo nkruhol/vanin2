@@ -1,0 +1,24 @@
+header {
+  width: 100%;
+  height: 50px;
+
+  .navbar-color {
+    background-color: rgb(247, 247, 247);
+  }
+
+  .nav-item--language {
+    position: absolute;
+    right: 20px;
+  }
+
+  .nav-item {
+    .dropdown-menu {
+      left: -100px;
+
+      .dropdown-item:hover {
+        cursor: pointer;
+        background-color: lightgray;
+      }
+    }
+  }
+}
