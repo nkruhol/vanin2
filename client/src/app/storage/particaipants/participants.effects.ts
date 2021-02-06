@@ -13,6 +13,9 @@ export interface IFaunaDbEntity<T> {
 }
 
 @Injectable()
+
+
+
 export class ParticipantsEffect {
 
   constructor(
@@ -24,8 +27,8 @@ export class ParticipantsEffect {
   init$ = createEffect(() => this.actions$.pipe(
     ofType(InitParticipantsListAction),
     switchMap(() => {
-
-      const participants$ = this.http.get("http://localhost:5001/vanin2/us-central1/participants").pipe(
+//http://localhost:5001/vanin2/us-central1/participants
+      const participants$ = this.http.get("https://us-central1-vanin2.cloudfunctions.net/participants").pipe(
         map((res: IFaunaDbEntity<IParticipant>) => {
 
           return {

@@ -1,8 +1,8 @@
-import firebase from "firebase";
-// Set the configuration for your app
-// TODO: Replace with your project's config object
-var config = {
-    apiKey: "apiKey",
+import * as firebase from "firebase-admin";
+
+const config = {
+    apiKey: "",
+    appId: "",
     authDomain: "vanin2.firebaseapp.com",
     // For databases not in the us-central1 location, databaseURL will be of the
     // form https://[databaseName].[region].firebasedatabase.app.
@@ -14,5 +14,4 @@ var config = {
 
 firebase.initializeApp(config);
 
-// Get a reference to the database service
 export const database = firebase.database();
