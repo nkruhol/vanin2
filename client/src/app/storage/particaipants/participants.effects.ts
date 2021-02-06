@@ -9,12 +9,7 @@ import { ExtendStateAction, InitParticipantsListAction } from "./participants.ac
 import { IParticipant, State } from "./participants.state";
 
 export interface IFaunaDbEntity<T> {
-  data: T;
-  ref: {
-    "@ref": {
-      id: number;
-    }
-  }
+  data: T[];
 }
 
 @Injectable()
@@ -30,12 +25,12 @@ export class ParticipantsEffect {
     ofType(InitParticipantsListAction),
     switchMap(() => {
 
-      const participants$ = this.http.get(".netlify/functions/participants").pipe(
-        map((res: IFaunaDbEntity<IParticipant>[]) => {
+      const participants$ = this.http.get("http://localhost:5001/vanin2/us-central1/participants").pipe(
+        map((res: IFaunaDbEntity<IParticipant>) => {
 
           return {
             state: State.DATA,
-            participants: (res || []).map(i => ({ ...i.data, id: i.ref["@ref"].id })),
+            participants: res.data,
           };
         })
       );

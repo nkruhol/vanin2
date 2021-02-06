@@ -34,7 +34,7 @@ export class RegistrationEffect {
     ofType(CreateParticipantAction),
     switchMap(({ form }) => {
 
-      const registration$ = this.http.post(".netlify/functions/create-participant", form).pipe(
+      const registration$ = this.http.post("http://localhost:5001/vanin2/us-central1/createParticipant", form).pipe(
         map(res => {
 
           this.toast.showToast({

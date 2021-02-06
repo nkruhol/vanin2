@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnDestroy {
 
   State = State;
 
-  notRobot: boolean;
+  notRobot: boolean = true;
 
   registrationForm = this.fb.group({
     firstName: [null, [Validators.required]],

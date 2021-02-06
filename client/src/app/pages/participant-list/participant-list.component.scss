@@ -1,9 +1,11 @@
 .participants-container {
 
   table {
-    tr:hover {
-      background-color: lightgray;
-      cursor: pointer;
+    tbody {
+      tr:hover {
+        background-color: lightgray;
+        cursor: pointer;
+      }
     }
   }
 }

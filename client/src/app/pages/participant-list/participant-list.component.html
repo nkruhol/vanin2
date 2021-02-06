@@ -3,7 +3,7 @@
     <h3>Список участников</h3>
 
     <div class="spinner-border spinner-lg spinner-center spminner-top--200" role="status"
-      *ngIf="true || (state$ | async) == State.LOADING">
+      *ngIf="(state$ | async) == State.LOADING">
       <span class="visually-hidden"></span>
     </div>
 
