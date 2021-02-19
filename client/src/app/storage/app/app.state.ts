@@ -6,4 +6,5 @@ export enum LanguageEnum {
 }
 export class AppState {
   language = LanguageEnum.UA;
+  isUserLogged: boolean;
 }

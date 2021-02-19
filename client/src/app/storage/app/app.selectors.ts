@@ -7,3 +7,8 @@ export const selectLanguage = createSelector(
   appState,
   i => i.language,
 );
+
+export const selectIsUserLogged = createSelector(
+  appState,
+  i => i.isUserLogged,
+);

@@ -9,4 +9,12 @@ export const ExtendStateAction = createAction(
 export const ChangeLanguageAction = createAction(
   "[App] Change Language",
   props<{ language: LanguageEnum }>(),
-)
+);
+
+export const LoginAction = createAction(
+  "[App] Login"
+);
+
+export const LogoutAction = createAction(
+  "[App] Logout"
+);

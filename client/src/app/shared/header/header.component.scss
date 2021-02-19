@@ -11,6 +11,11 @@ header {
     right: 20px;
   }
 
+  .nav-item--logout {
+    position: absolute;
+    right: 80px;
+  }
+
   .nav-item {
     .dropdown-menu {
       left: -100px;

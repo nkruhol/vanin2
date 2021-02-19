@@ -43,6 +43,14 @@
           <!-- <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li> -->
+          <li class="nav-item nav-item--logout">
+            <a class="nav-link"
+              *ngIf="isUserLogged$ | async"
+              (click)="logout()">Выйти</a>
+            <a class="nav-link"
+              *ngIf="!(isUserLogged$ | async)"
+              (click)="login()">Войти</a>
+          </li>
           <li class="nav-item dropdown nav-item--language"
             ngbDropdown>
             <a class="nav-link dropdown-toggle"
