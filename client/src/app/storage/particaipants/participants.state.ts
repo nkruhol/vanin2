@@ -7,7 +7,8 @@ export interface IParticipant {
   coAuthors: string;
   description: string;
   phone: string;
-  id?: number;
+  id?: string;
+  isApproved: boolean;
 }
 
 export enum State {

@@ -30,40 +30,40 @@ export class AddArticleEffect {
     private toast: ToastsService,
   ) {}
 
-  getParticipantsByEmail$ = createEffect(() => this.actions$.pipe(
+  // getParticipantsByEmail$ = createEffect(() => this.actions$.pipe(
 
-    ofType(GetParticipantsByEmail),
-    switchMap(({ email }) => {
+  //   ofType(GetParticipantsByEmail),
+  //   switchMap(({ email }) => {
 
-      const get$ = this.http.get(".netlify/functions/participants-by-email", {
-        params: { email }
-      }).pipe(
-        map((res: IFaunaDbEntity<IParticipant>[]) => {
+  //     const get$ = this.http.get(".netlify/functions/participants-by-email", {
+  //       params: { email }
+  //     }).pipe(
+  //       map((res: IFaunaDbEntity<IParticipant>[]) => {
 
-          console.log(res);
-          const participants = (res || []).map(i => ({ ...i.data, id: i.ref["@ref"].id }));
+  //         console.log(res);
+  //         const participants = (res || []).map(i => ({ ...i.data, id: i.ref["@ref"].id }));
 
-          return {
-            state: participants.length > 0 ? State.DATA : State.NO_DATA,
-            participants,
-          };
-        }),
-        catchError(err => {
+  //         return {
+  //           state: participants.length > 0 ? State.DATA : State.NO_DATA,
+  //           participants,
+  //         };
+  //       }),
+  //       catchError(err => {
 
-          this.toast.showToast({
-            text: err.message,
-            severity: ToastSeverity.DANGER,
-          });
+  //         this.toast.showToast({
+  //           text: err.message,
+  //           severity: ToastSeverity.DANGER,
+  //         });
 
-          return of({ state: State.ERROR });
-        }),
-      )
+  //         return of({ state: State.ERROR });
+  //       }),
+  //     )
 
-      return concat(
-        of({ state: State.LOADING }),
-        get$,
-      );
-    }),
-    map(newState => ExtendStateAction({ newState })),
-  ))
+  //     return concat(
+  //       of({ state: State.LOADING }),
+  //       get$,
+  //     );
+  //   }),
+  //   map(newState => ExtendStateAction({ newState })),
+  // ))
 }

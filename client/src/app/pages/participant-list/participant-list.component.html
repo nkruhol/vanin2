@@ -16,7 +16,12 @@
           <th scope="col" width="25%">Название доклада</th>
           <th scope="col" width="15%">Организация</th>
           <th scope="col">Анотация</th>
-          <th scope="col" width="15%">Контактная информация</th>
+          <ng-container>
+            <th scope="col" width="15%">Email</th>
+            <th>Phone</th>
+            <th>Is Approved</th>
+            <th>Actions</th>
+          </ng-container>
         </tr>
       </thead>
       <tbody>
@@ -26,7 +31,18 @@
           <td>{{ row.articleName }}</td>
           <td>{{ row.organization }}</td>
           <td>{{ row.description }}</td>
-          <td>{{ row.email }}</td>
+          <ng-container>
+            <td>{{ row.email }}</td>
+            <td>{{ row.phone }}</td>
+            <td>{{ row.isApproved ? "Yes" : "No" }}</td>
+            <td>
+              <button type="button"
+                class="btn btn-primary"
+                (click)="approveParticipant(row)">
+                Approve
+              </button>
+            </td>
+          </ng-container>
         </tr>
       </tbody>
     </table>

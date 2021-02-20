@@ -25,6 +25,7 @@ import { ContactsComponent } from './pages/contacts/contacts.component';
 import { AngularFireModule } from "@angular/fire";
 import { SetAuthHeaderInterceptor } from "./set-auth-header-interceptor";
 import { LoginModalComponent } from './shared/login-modal/login-modal.component';
+import { environment } from "src/environments/environment";
 
 @NgModule({
   declarations: [
@@ -56,15 +57,7 @@ import { LoginModalComponent } from './shared/login-modal/login-modal.component'
     StoreRouterConnectingModule.forRoot({
         serializer: CustomRouterSerializer,
     }),
-    AngularFireModule.initializeApp({
-      apiKey: "AIzaSyDt4HSt5-X7jzDM5Z5Sj7Zd31JeNXqLs_8",
-      authDomain: "vanin2.firebaseapp.com",
-      databaseURL: "https://vanin2-default-rtdb.europe-west1.firebasedatabase.app",
-      projectId: "vanin2",
-      storageBucket: "vanin2.appspot.com",
-      messagingSenderId: "555752846867",
-      appId: "1:555752846867:web:874c36ab2eeb7942ab31e6"
-    }),
+    AngularFireModule.initializeApp(environment.firebase),
     NgbDropdownModule,
     NgbModalModule,
   ],

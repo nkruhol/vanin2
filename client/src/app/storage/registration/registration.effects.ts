@@ -6,6 +6,7 @@ import { concat, of } from "rxjs";
 import { catchError, map, switchMap } from "rxjs/operators";
 import { ToastSeverity } from "src/app/shared/toasts/toast";
 import { ToastsService } from "src/app/shared/toasts/toasts.service";
+import { environment } from "src/environments/environment";
 import { IStore } from "../store";
 import { CreateParticipantAction, ExtendStateAction } from "./registration.actions";
 import { State } from "./registration.state";
@@ -34,7 +35,7 @@ export class RegistrationEffect {
     ofType(CreateParticipantAction),
     switchMap(({ form }) => {
 
-      const registration$ = this.http.post("https://us-central1-vanin2.cloudfunctions.net/createParticipant", form).pipe(
+      const registration$ = this.http.post(environment.api + "/createParticipant", form).pipe(
         map(res => {
 
           this.toast.showToast({

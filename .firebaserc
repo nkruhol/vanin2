@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "vanin2"
+    "default": "vanin2",
+    "staging": "vanin-test"
   }
 }
