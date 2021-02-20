@@ -16,10 +16,10 @@
           <th scope="col" width="25%">Название доклада</th>
           <th scope="col" width="15%">Организация</th>
           <th scope="col">Анотация</th>
-          <ng-container>
+          <ng-container *ngIf="isUserLogged$ | async">
             <th scope="col" width="15%">Email</th>
             <th>Phone</th>
-            <th>Is Approved</th>
+            <th>Регистрация подтверждена</th>
             <th>Actions</th>
           </ng-container>
         </tr>
@@ -31,15 +31,21 @@
           <td>{{ row.articleName }}</td>
           <td>{{ row.organization }}</td>
           <td>{{ row.description }}</td>
-          <ng-container>
+          <ng-container *ngIf="isUserLogged$ | async">
             <td>{{ row.email }}</td>
             <td>{{ row.phone }}</td>
-            <td>{{ row.isApproved ? "Yes" : "No" }}</td>
+            <td>{{ row.isApproved ? "Да" : "Нет" }}</td>
             <td>
               <button type="button"
+                *ngIf="!row.isApproved"
+                [disabled]="approvingId$ |async"
                 class="btn btn-primary"
                 (click)="approveParticipant(row)">
-                Approve
+                Подтвердить регистрацию
+                <div class="spinner-border" role="status"
+                  *ngIf="(approvingId$ | async) == row.id">
+                  <span class="sr-only">Loading...</span>
+                </div>
               </button>
             </td>
           </ng-container>

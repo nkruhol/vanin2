@@ -12,3 +12,8 @@ export const selectState = createSelector(
   participantsState,
   i => i.state,
 );
+
+export const selectApprovingId = createSelector(
+  participantsState,
+  i => i.approvingId,
+);

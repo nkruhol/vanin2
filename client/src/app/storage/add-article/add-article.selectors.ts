@@ -7,8 +7,3 @@ export const selectState = createSelector(
   addArticleState,
   i => i.state,
 );
-
-export const selectParticipants = createSelector(
-  addArticleState,
-  i => i.participants,
-);

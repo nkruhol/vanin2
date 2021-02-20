@@ -77,10 +77,11 @@
         </textarea>
       </div>
 
-      <div class="md-3">
+      <div class="md-3"
+        *ngIf="showRecapthca">
         <re-captcha
           (resolved)="resolved($event)"
-          siteKey="6LfRuyYaAAAAAC-Fh8cFC_BuWb8iwyeh9Ewea7YN">
+          [siteKey]="recaptchaKey">
         </re-captcha>
       </div>
 

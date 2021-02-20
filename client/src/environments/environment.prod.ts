@@ -1,7 +1,9 @@
-import { ProdFirebaseConfig } from "src/config";
+import { ProdFirebaseConfig, ProdRecaptchaKey } from "src/config";
 
 export const environment = {
   production: true,
-  api: "https://us-central1-vanin-test.cloudfunctions.net",
-  firebase: ProdFirebaseConfig
+  api: "https://us-central1-vanin2.cloudfunctions.net",
+  firebase: ProdFirebaseConfig,
+  isRecapthaUsed: true,
+  recaptchaKey: ProdRecaptchaKey,
 };

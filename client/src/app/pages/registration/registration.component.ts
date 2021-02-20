@@ -5,6 +5,7 @@ import { CreateParticipantAction, ExtendStateAction } from "src/app/storage/regi
 import { selectState } from "src/app/storage/registration/registration.selectors";
 import { State } from "src/app/storage/registration/registration.state";
 import { IStore } from "src/app/storage/store";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'app-registration',
@@ -22,7 +23,9 @@ export class RegistrationComponent implements OnDestroy {
 
   State = State;
 
-  notRobot: boolean = true;
+  notRobot: boolean = !environment.isRecapthaUsed;
+  recaptchaKey: string = environment.recaptchaKey;
+  showRecapthca = environment.isRecapthaUsed;
 
   registrationForm = this.fb.group({
     firstName: [null, [Validators.required]],

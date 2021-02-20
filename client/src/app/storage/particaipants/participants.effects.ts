@@ -3,10 +3,13 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { concat, of } from "rxjs";
-import { map, switchMap } from "rxjs/operators";
+import { catchError, map, switchMap, withLatestFrom } from "rxjs/operators";
+import { ToastSeverity } from "src/app/shared/toasts/toast";
+import { ToastsService } from "src/app/shared/toasts/toasts.service";
 import { environment } from "src/environments/environment";
 import { IStore } from "../store";
 import { ApproveParticipantAction, ExtendStateAction, InitParticipantsListAction } from "./participants.actions";
+import { selectParticipants } from "./participants.selectors";
 import { IParticipant, State } from "./participants.state";
 
 export interface IFaunaDbEntity<T> {
@@ -20,12 +23,13 @@ export class ParticipantsEffect {
     private store: Store<IStore>,
     private actions$: Actions,
     private http: HttpClient,
+    private toast: ToastsService,
   ) {}
 
   init$ = createEffect(() => this.actions$.pipe(
     ofType(InitParticipantsListAction),
     switchMap(() => {
-//http://localhost:5001/vanin2/us-central1/participants
+
       const participants$ = this.http.get(environment.api + "/participants").pipe(
         map((res: IFaunaDbEntity<IParticipant>) => {
 
@@ -46,11 +50,37 @@ export class ParticipantsEffect {
 
   approve$ = createEffect(() => this.actions$.pipe(
     ofType(ApproveParticipantAction),
-    switchMap(action => this.http.post(environment.api + "/approveParticipant", action.participant)),
-    map(res => {
+    withLatestFrom(this.store.select(selectParticipants)),
+    switchMap(([action, participants]) => {
 
-      console.log(33, res);
-      return ExtendStateAction({ newState: {} });
+        const approve$ = this.http.post(environment.api + "/approveParticipant", action.participant).pipe(
+          map(() => {
+
+            this.toast.showToast({
+              text: "Регистрация подтверждена. Письмо на электронную почту участника отправлено!",
+              severity: ToastSeverity.SUCCESS,
+            });
+
+            return ExtendStateAction({ newState: {
+              participants: (participants || []).map(i => ({ ...i, isApproved: i.id == action.participant.id ? true : i.isApproved })),
+              approvingId: null,
+            }});
+          }),
+          catchError(err => {
+
+            this.toast.showToast({
+              text: err.error?.err?.message ?? "Internal Server Error",
+              severity: ToastSeverity.DANGER,
+            });
+
+            return of(ExtendStateAction({ newState: { approvingId: null }}));
+          }),
+        );
+
+        return concat(
+          of(ExtendStateAction({ newState: { approvingId: action.participant.id }})),
+          approve$,
+        );
     }),
   ))
 }

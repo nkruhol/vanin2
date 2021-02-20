@@ -20,4 +20,5 @@ export enum State {
 export class ParticipantsState {
   participants: IParticipant[];
   state = State.NO_DATA;
+  approvingId: string;
 }
