@@ -4,48 +4,48 @@
 
     <div class="alert alert-success" role="alert"
       *ngIf="(state$ | async) == State.SAVED">
-      Вы зарегестрированы для участия в конференции!
+      {{ "REGISTRATION.PARTICIPANT_IS_REGISTERED" | translate }}
     </div>
 
     <div class="alert alert-danger" role="alert"
       *ngIf="(state$ | async) == State.ERROR">
-      Ошибка! Попробуйте позже!
+      {{ "REGISTRATION.PARTICIPANT_REGISTRATION_ERROR" | translate }}
     </div>
 
-    <h3>Форма регистрации учасника конференции</h3>
+    <h3>{{ "REGISTRATION.REGISTRATION_FORM_TITLE" | translate }}</h3>
     <form [formGroup]="registrationForm"
       novalidate
       (submit)="registration()">
       <div class="mb-3">
-        <label for="firstName" class="form-label">Имя</label>
+        <label for="firstName" class="form-label">{{ "REGISTRATION.FIRST_NAME" | translate }}</label>
         <input type="text"
           class="form-control"
           id="firstName"
           formControlName="firstName">
       </div>
       <div class="mb-3">
-        <label for="lastName" class="form-label">Фамилия</label>
+        <label for="lastName" class="form-label">{{ "REGISTRATION.LAST_NAME" | translate }}</label>
         <input type="text"
           class="form-control"
           id="lastName"
           formControlName="lastName">
       </div>
       <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
+        <label for="email" class="form-label">{{ "REGISTRATION.EMAIL" | translate }}</label>
         <input type="email"
           class="form-control"
           id="email"
           formControlName="email">
       </div>
       <div class="mb-3">
-        <label for="phone" class="form-label">Контактный телефон</label>
+        <label for="phone" class="form-label">{{ "REGISTRATION.PHONE_NUMBER" | translate }}</label>
         <input type="phone"
           class="form-control"
           id="phone"
           formControlName="phone">
       </div>
       <div class="mb-3">
-        <label for="articleName" class="form-label">Название доклада</label>
+        <label for="articleName" class="form-label">{{ "REGISTRATION.REPORT_TITLE" | translate }}</label>
         <textarea
           class="form-control"
           id="artivleName"
@@ -53,14 +53,14 @@
         </textarea>
       </div>
       <div class="mb-3">
-        <label for="orgqnization" class="form-label">Организация</label>
+        <label for="orgqnization" class="form-label">{{ "REGISTRATION.ORGANIZATION" | translate }}</label>
         <input type="text"
           class="form-control"
           id="orgqnization"
           formControlName="organization">
       </div>
       <div class="mb-3">
-        <label for="coAuthors" class="form-label">Все соавторы (в виде Иванов И.И., включая основного автора)</label>
+        <label for="coAuthors" class="form-label">{{ "REGISTRATION.CO_AUTHORS" | translate }}</label>
         <textarea
           class="form-control"
           id="coAuthors"
@@ -68,7 +68,7 @@
         </textarea>
       </div>
       <div class="mb-3">
-        <label for="description" class="form-label">Короткая анотация</label>
+        <label for="description" class="form-label">{{ "REGISTRATION.ANNOTATION" | translate }}</label>
         <textarea
           class="form-control"
           id="description"
@@ -91,7 +91,7 @@
           || (state$ | async) == State.SAVING
           || (state$ | async) == State.SAVED"
         class="btn btn-primary">
-          Submit
+          {{ "REGISTRATION.SUBMIT_BTN_TITLE" | translate }}
           <div class="spinner-border spinner-sm" role="status"
             *ngIf="(state$ | async) == State.SAVING">
             <span class="visually-hidden"></span>

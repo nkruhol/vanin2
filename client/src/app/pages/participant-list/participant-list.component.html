@@ -1,6 +1,6 @@
 <div class="participants-container row">
   <div class="col-12">
-    <h3>Список участников</h3>
+    <h3>{{ "PARTICIPANTS.PARTICIPANTS_LIST" | translate }}</h3>
 
     <div class="spinner-border spinner-lg spinner-center spminner-top--200" role="status"
       *ngIf="(state$ | async) == State.LOADING">
@@ -12,10 +12,10 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col" width="10%">Авторы</th>
-          <th scope="col" width="25%">Название доклада</th>
-          <th scope="col" width="15%">Организация</th>
-          <th scope="col">Анотация</th>
+          <th scope="col" width="10%">{{ "PARTICIPANTS.AUTHORS" | translate }}</th>
+          <th scope="col" width="25%">{{ "PARTICIPANTS.REPORT_TITLE" | translate }}</th>
+          <th scope="col" width="15%">{{ "PARTICIPANTS.ORGANIZATION" | translate }}</th>
+          <th scope="col">{{ "PARTICIPANTS.ANNOTATION" | translate }}</th>
           <ng-container *ngIf="isUserLogged$ | async">
             <th scope="col" width="15%">Email</th>
             <th>Phone</th>

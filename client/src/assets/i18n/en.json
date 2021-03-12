@@ -1,0 +1,38 @@
+{
+  "PROFILE": {
+    "TITLE": "DSMMPh",
+    "HISTORY": "DSMMPh History",
+    "REGISTRATION": "Registration",
+    "PARTICIPANTS_LIST": "Participants List",
+    "CONTACTS": "Contacts",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout"
+  },
+  "REGISTRATION": {
+    "PARTICIPANT_IS_REGISTERED": "You are successful registered in conference!",
+    "PARTICIPANT_REGISTRATION_ERROR": "Error! Try later!",
+    "REGISTRATION_FORM_TITLE": "Registration Form",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "EMAIL": "Email",
+    "PHONE_NUMBER": "Phone Number",
+    "REPORT_TITLE": "Report Title",
+    "ORGANIZATION": "Organization",
+    "CO_AUTHORS": "Co-authors (example: Ivanov I.I., include the main author)",
+    "ANNOTATION": "Annotation",
+    "SUBMIT_BTN_TITLE": "Register"
+  },
+  "PARTICIPANTS": {
+    "PARTICIPANTS_LIST": "Participants List",
+    "AUTHORS": "Authors",
+    "REPORT_TITLE": "Report Title",
+    "ORGANIZATION": "Organization",
+    "ANNOTATION": "Annotation"
+  },
+  "CONTACTS": {
+    "CONTACTS": "Contacts",
+    "DEPARTMENT": "Department of Hight Mathematic of NTU 'KhPI'",
+    "ADDRESS": "Kharkiv, Kyrpichova str., 2",
+    "EMAIL": "symposium@dsmmph.org.ua"
+  }
+}

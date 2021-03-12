@@ -32,7 +32,9 @@
     "ng-recaptcha": "^7.0.1",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "@ngx-translate/core": "12.1.2",
+    "@ngx-translate/http-loader": "4.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1002.1",

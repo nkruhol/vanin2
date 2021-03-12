@@ -1,8 +1,8 @@
 
 export enum LanguageEnum {
-  UA = "UA",
-  RU = "RU",
-  EN = "EN",
+  UA = "ua",
+  RU = "ru",
+  EN = "en",
 }
 export class AppState {
   language = LanguageEnum.UA;

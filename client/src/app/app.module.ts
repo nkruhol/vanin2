@@ -4,7 +4,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbDropdownModule, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HomeComponent } from './pages/home/home.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -26,6 +26,12 @@ import { AngularFireModule } from "@angular/fire";
 import { SetAuthHeaderInterceptor } from "./set-auth-header-interceptor";
 import { LoginModalComponent } from './shared/login-modal/login-modal.component';
 import { environment } from "src/environments/environment";
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
+}
 
 @NgModule({
   declarations: [
@@ -60,6 +66,14 @@ import { environment } from "src/environments/environment";
     AngularFireModule.initializeApp(environment.firebase),
     NgbDropdownModule,
     NgbModalModule,
+    TranslateModule.forRoot({
+      defaultLanguage: "ua",
+      loader: {
+          provide: TranslateLoader,
+          useFactory: createTranslateLoader,
+          deps: [HttpClient],
+      }
+  }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SetAuthHeaderInterceptor, multi: true },

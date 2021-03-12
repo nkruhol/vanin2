@@ -2,11 +2,12 @@ import { Injectable } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { createAction } from "@ngrx/store";
+import { TranslateService } from "@ngx-translate/core";
 import { from } from "rxjs";
-import { filter, switchMap } from "rxjs/operators";
+import { filter, map, switchMap } from "rxjs/operators";
 import { AuthService } from "src/app/services/auth.service";
 import { LoginModalComponent } from "src/app/shared/login-modal/login-modal.component";
-import { LoginAction, LogoutAction } from "./app.actions";
+import { ChangeLanguageAction, ExtendStateAction, LoginAction, LogoutAction } from "./app.actions";
 
 @Injectable()
 export class AppEffects {
@@ -15,6 +16,7 @@ export class AppEffects {
     private actions$: Actions,
     private modalService: NgbModal,
     private authService: AuthService,
+    private translate: TranslateService,
   ) {}
 
   login$ = createEffect(() => this.actions$.pipe(
@@ -40,5 +42,16 @@ export class AppEffects {
     switchMap(() => this.authService.SignOut()),
   ), {
     dispatch: false,
-  })
+  });
+
+  changeLanguage$ = createEffect(() => this.actions$.pipe(
+
+    ofType(ChangeLanguageAction),
+    map(({ language }) => {
+
+      this.translate.use(language);
+
+      return ExtendStateAction({ newState: { language }})
+    })
+  ));
 }

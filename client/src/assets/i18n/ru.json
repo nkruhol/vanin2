@@ -1,0 +1,38 @@
+{
+  "PROFILE": {
+    "TITLE": "МДО ЗМФ",
+    "HISTORY": "История МДО ЗМФ",
+    "REGISTRATION": "Регистрация",
+    "PARTICIPANTS_LIST": "Список учасников",
+    "CONTACTS": "Контакты",
+    "LOGIN": "Войти",
+    "LOGOUT": "Выйти"
+  },
+  "REGISTRATION": {
+    "PARTICIPANT_IS_REGISTERED": "Вы зарегестрированы для участия в конференции!",
+    "PARTICIPANT_REGISTRATION_ERROR": "Ошибка! Попробуйте позже!",
+    "REGISTRATION_FORM_TITLE": "Форма регистрации учасника конференции",
+    "FIRST_NAME": "Имя",
+    "LAST_NAME": "Фамилия",
+    "EMAIL": "Email",
+    "PHONE_NUMBER": "Контактный телефон",
+    "REPORT_TITLE": "Название доклада",
+    "ORGANIZATION": "Организация",
+    "CO_AUTHORS": "Все соавторы (в виде Иванов И.И., включая основного автора)",
+    "ANNOTATION": "Короткая анотация",
+    "SUBMIT_BTN_TITLE": "Зарегистрироваться"
+  },
+  "PARTICIPANTS": {
+    "PARTICIPANTS_LIST": "Список участников",
+    "AUTHORS": "Авторы",
+    "REPORT_TITLE": "Название доклада",
+    "ORGANIZATION": "Организация",
+    "ANNOTATION": "Анотация"
+  },
+  "CONTACTS": {
+    "CONTACTS": "Контактs",
+    "DEPARTMENT": "Кафедра высшей математики НТУ 'ХПИ'",
+    "ADDRESS": "Харьков, ул. Кирпичева, 2",
+    "EMAIL": "symposium@dsmmph.org.ua"
+  }
+}

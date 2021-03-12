@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from "@ngrx/store";
+import { selectLanguage } from "src/app/storage/app/app.selectors";
+import { LanguageEnum } from "src/app/storage/app/app.state";
+import { IStore } from "src/app/storage/store";
 
 @Component({
   selector: 'app-home',
@@ -7,7 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  language$ = this.store.select(selectLanguage);
+
+  constructor(
+    private store: Store<IStore>,
+  ) { }
+
+  LanguageEnum = LanguageEnum;
 
   ngOnInit(): void {
   }
