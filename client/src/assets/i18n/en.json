@@ -4,6 +4,7 @@
     "HISTORY": "DSMMPh History",
     "REGISTRATION": "Registration",
     "PARTICIPANTS_LIST": "Participants List",
+    "ARTICLE_RULES": "Rules for publication",
     "CONTACTS": "Contacts",
     "LOGIN": "Login",
     "LOGOUT": "Logout"
@@ -34,5 +35,12 @@
     "DEPARTMENT": "Department of Hight Mathematic of NTU 'KhPI'",
     "ADDRESS": "Kharkiv, Kyrpichova str., 2",
     "EMAIL": "symposium@dsmmph.org.ua"
+  },
+  "ARTICLE_RULES": {
+    "TITLE": "Rules for publications",
+    "TEXT": "Publications will be published in the journal",
+    "NAME": "Journal of Computational and Applied Mathematics",
+    "LINK_TEXT": "Publishing rules can be downloaded",
+    "LINK": "here"
   }
 }

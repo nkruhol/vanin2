@@ -28,6 +28,7 @@ import { LoginModalComponent } from './shared/login-modal/login-modal.component'
 import { environment } from "src/environments/environment";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { ArticleRulesComponent } from './pages/article-rules/article-rules.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -46,6 +47,7 @@ export function createTranslateLoader(http: HttpClient) {
     HistoryComponent,
     ContactsComponent,
     LoginModalComponent,
+    ArticleRulesComponent,
   ],
   imports: [
     BrowserModule,
