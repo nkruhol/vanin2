@@ -4,50 +4,6 @@
       <a class="navbar-brand font-size-24" routerLink="/">{{ "PROFILE.TITLE" | translate }}</a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link font-size-24"
-              routerLinkActive="active"
-              routerLink="/history">{{ "PROFILE.HISTORY" | translate }}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link font-size-24"
-              routerLinkActive="active"
-              routerLink="/registration">{{ "PROFILE.REGISTRATION" | translate }}</a>
-          </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link"
-              routerLinkActive="active"
-              routerLink="/add-article">Загрузить статью</a>
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link font-size-24"
-              routerLinkActive="active"
-              routerLink="/participants">{{ "PROFILE.PARTICIPANTS_LIST" | translate }}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link font-size-24"
-              routerLinkActive="active"
-              routerLink="/rules">{{ "PROFILE.ARTICLE_RULES" | translate }}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link font-size-24"
-              routerLinkActive="active"
-              routerLink="/contacts">{{ "PROFILE.CONTACTS" | translate }}</a>
-          </li>
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li> -->
-          <!-- <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li> -->
           <li class="nav-item nav-item--logout">
             <a class="nav-link"
               *ngIf="isUserLogged$ | async"

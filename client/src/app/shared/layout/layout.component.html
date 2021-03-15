@@ -1,4 +1,33 @@
 <app-header></app-header>
+
+<div class="sidebar">
+  <div class="nav-item">
+    <a class="nav-link font-size-16"
+      routerLinkActive="active"
+      routerLink="/history">{{ "PROFILE.HISTORY" | translate }}</a>
+  </div>
+  <div class="nav-item">
+    <a class="nav-link font-size-16"
+      routerLinkActive="active"
+      routerLink="/registration">{{ "PROFILE.REGISTRATION" | translate }}</a>
+  </div>
+  <div class="nav-item">
+    <a class="nav-link font-size-16"
+      routerLinkActive="active"
+      routerLink="/participants">{{ "PROFILE.PARTICIPANTS_LIST" | translate }}</a>
+  </div>
+  <div class="nav-item">
+    <a class="nav-link font-size-16"
+      routerLinkActive="active"
+      routerLink="/rules">{{ "PROFILE.ARTICLE_RULES" | translate }}</a>
+  </div>
+  <div class="nav-item">
+    <a class="nav-link font-size-16"
+      routerLinkActive="active"
+      routerLink="/contacts">{{ "PROFILE.CONTACTS" | translate }}</a>
+  </div>
+</div>
+
 <div class="layout-container">
   <div class="container">
     <ng-content></ng-content>

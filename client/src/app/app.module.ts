@@ -29,6 +29,7 @@ import { environment } from "src/environments/environment";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { ArticleRulesComponent } from './pages/article-rules/article-rules.component';
+import { NgxMaskModule } from "ngx-mask";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -75,7 +76,8 @@ export function createTranslateLoader(http: HttpClient) {
           useFactory: createTranslateLoader,
           deps: [HttpClient],
       }
-  }),
+    }),
+    NgxMaskModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SetAuthHeaderInterceptor, multi: true },
