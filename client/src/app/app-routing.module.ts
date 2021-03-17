@@ -5,6 +5,7 @@ import { ArticleRulesComponent } from "./pages/article-rules/article-rules.compo
 import { ContactsComponent } from "./pages/contacts/contacts.component";
 import { HistoryComponent } from "./pages/history/history.component";
 import { HomeComponent } from "./pages/home/home.component";
+import { LettersComponent } from "./pages/letters/letters.component";
 import { ParticipantListComponent } from "./pages/participant-list/participant-list.component";
 import { RegistrationComponent } from "./pages/registration/registration.component";
 
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: "history",
     component: HistoryComponent,
+  },
+  {
+    path: "letters",
+    component: LettersComponent,
   },
   {
     path: "contacts",

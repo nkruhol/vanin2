@@ -30,6 +30,7 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { ArticleRulesComponent } from './pages/article-rules/article-rules.component';
 import { NgxMaskModule } from "ngx-mask";
+import { LettersComponent } from './pages/letters/letters.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -49,6 +50,7 @@ export function createTranslateLoader(http: HttpClient) {
     ContactsComponent,
     LoginModalComponent,
     ArticleRulesComponent,
+    LettersComponent,
   ],
   imports: [
     BrowserModule,

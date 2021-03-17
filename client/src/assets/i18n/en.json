@@ -1,10 +1,11 @@
 {
   "PROFILE": {
-    "TITLE": "DSMMPh",
-    "HISTORY": "DSMMPh History",
+    "TITLE": "DSMMPh-2021",
+    "HISTORY": "DSMMPh history",
     "REGISTRATION": "Registration",
-    "PARTICIPANTS_LIST": "Participants List",
+    "PARTICIPANTS_LIST": "Participants list",
     "ARTICLE_RULES": "Rules for publication",
+    "LETTERS": "Information letters",
     "CONTACTS": "Contacts",
     "LOGIN": "Login",
     "LOGOUT": "Logout"
@@ -42,5 +43,10 @@
     "NAME": "Journal of Computational and Applied Mathematics",
     "LINK_TEXT": "Publishing rules can be downloaded",
     "LINK": "here"
+  },
+  "LETTERS": {
+    "TITLE": "Information letters",
+    "FIRST_LETTER": "First information letter",
+    "DOWNLOAD": "download"
   }
 }
