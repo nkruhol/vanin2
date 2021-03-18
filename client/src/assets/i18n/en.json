@@ -42,7 +42,13 @@
     "TEXT": "Publications will be published in the journal",
     "NAME": "Journal of Computational and Applied Mathematics",
     "LINK_TEXT": "Publishing rules can be downloaded",
-    "LINK": "here"
+    "LINK": "here",
+    "REQUIREMENTS_TITLE": "Requirements for the design of an article for its publication in the 'Journal of Computational and Applied Mathematics' (2021), included in the list of peer-reviewed publications of the Ministry of Education and Science of Ukraine)",
+    "REQUIREMENT_1": "Formatting the article in accordance with the template (Template of the article MDOZMFDSMMPh- 2021.doc) - 6 full pages of text (the text of the article, together with titles, with 2 annotations and together with a list of references) + additional (1-2) pages (only with titles and abstracts of articles in 3 languages: English, Ukrainian, Russian and bibliography in English)",
+    "REQUIREMENT_2": "Making an article in the form of 2 named files: Author1-Author2-Title.doc and Author1-Author2-Title.pdf",
+    "REQUIREMENT_3": "Compliance of the article with the subject matter of the MDOZMF-2021 symposium",
+    "REQUIREMENT_4": "Passing peer review in the editorial board of the 'Journal of Numerical and Applied Mathematics'",
+    "EMAIL_TEXT": " Articles in the form of files are sent to the email address"
   },
   "LETTERS": {
     "TITLE": "Information letters",
