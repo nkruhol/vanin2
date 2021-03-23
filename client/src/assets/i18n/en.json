@@ -22,7 +22,8 @@
     "ORGANIZATION": "Organization",
     "CO_AUTHORS": "Co-authors (example: Ivanov I.I., include the main author)",
     "ANNOTATION": "Annotation",
-    "SUBMIT_BTN_TITLE": "Register"
+    "SUBMIT_BTN_TITLE": "Register",
+    "SECTION": "Section"
   },
   "PARTICIPANTS": {
     "PARTICIPANTS_LIST": "Participants List",

@@ -47,6 +47,14 @@
           formControlName="phone">
       </div>
       <div class="mb-3">
+        <label for="section" class="form-label">{{ "REGISTRATION.SECTION" | translate }}</label>
+        <select class="form-select" aria-label="Default select example"
+          formControlName="section">
+          <option *ngFor="let section of (sections$ | async)"
+            [value]="section">{{ section }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
         <label for="articleName" class="form-label">{{ "REGISTRATION.REPORT_TITLE" | translate }}</label>
         <textarea
           class="form-control"

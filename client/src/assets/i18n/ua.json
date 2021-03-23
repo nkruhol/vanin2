@@ -11,18 +11,19 @@
     "LOGOUT": "Вийти"
   },
   "REGISTRATION": {
-    "PARTICIPANT_IS_REGISTERED": "Ви зараєстровані для участі в конференції!",
+    "PARTICIPANT_IS_REGISTERED": "Ви зараєстровані для участі в симпозіумі!",
     "PARTICIPANT_REGISTRATION_ERROR": "Помилка! Спробуйте пізніше!",
-    "REGISTRATION_FORM_TITLE": "Форма реєстрації учасника конференції",
+    "REGISTRATION_FORM_TITLE": "Форма реєстрації учасника симпозіума",
     "FIRST_NAME": "Ім'я",
     "LAST_NAME": "Прізвище",
     "EMAIL": "Email",
     "PHONE_NUMBER": "Контактний телефон",
     "REPORT_TITLE": "Назва доповіді",
     "ORGANIZATION": "Організація",
-    "CO_AUTHORS": "Все соавтори (у вигляді Іванов І.І., включаючи основного автора)",
+    "CO_AUTHORS": "Співавтори (у вигляді Іванов І.І., включаючи основного автора)",
     "ANNOTATION": "Коротка анотація",
-    "SUBMIT_BTN_TITLE": "Зареєструватися"
+    "SUBMIT_BTN_TITLE": "Зареєструватися",
+    "SECTION": "Секція"
   },
   "PARTICIPANTS": {
     "PARTICIPANTS_LIST": "Список учасників",
@@ -34,7 +35,7 @@
   "CONTACTS": {
     "CONTACTS": "Контакти",
     "DEPARTMENT": "Кафедра вищої математики НТУ 'ХПІ'",
-    "ADDRESS": "ул. Кирпичова 2, м. Харків, Україна 61002",
+    "ADDRESS": "вул. Кирпичова 2, м. Харків, Україна 61002",
     "EMAIL": "symposium@dsmmph.org.ua"
   },
   "ARTICLE_RULES": {
