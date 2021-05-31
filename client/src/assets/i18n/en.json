@@ -54,6 +54,7 @@
   "LETTERS": {
     "TITLE": "Information letters",
     "FIRST_LETTER": "First information letter",
-    "DOWNLOAD": "download"
+    "DOWNLOAD": "download",
+    "SECOND_LETTER": "Second information letter"
   }
 }
