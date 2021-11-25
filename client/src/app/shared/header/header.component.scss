@@ -8,6 +8,16 @@ header {
   border-bottom: 1px black solid;
   background-color: lightgray;
 
+  .nav-item--program {
+    position: absolute;
+    top: 17px;
+
+    a {
+      color: red;
+      text-transform: uppercase;
+    }
+  }
+
   .nav-item--language {
     position: absolute;
     right: 20px;
