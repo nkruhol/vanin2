@@ -38,7 +38,7 @@ export const participants = functions.https.onRequest((request, response) => {
 
     database.ref("participants").once('value')
       .then(snap => {
-
+          console.error('-----------------hello world=---------------------');
           let children: any = [];
           snap.forEach(child_snap => {
               
