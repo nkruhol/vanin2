@@ -16,6 +16,8 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "@firebase/storage": "^0.10.0",
+    "@google-cloud/storage": "^6.9.0",
     "cors": "^2.8.5",
     "firebase": "^8.10.1",
     "firebase-admin": "^9.2.0",

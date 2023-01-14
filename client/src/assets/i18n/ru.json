@@ -1,6 +1,6 @@
 {
   "PROFILE": {
-    "TITLE": "МДОЗМФ-2021",
+    "TITLE": "МДОЗМФ",
     "HISTORY": "История МДОЗМФ",
     "REGISTRATION": "Регистрация",
     "PARTICIPANTS_LIST": "Список учасников",
@@ -8,7 +8,8 @@
     "LETTERS": "Информационные письма",
     "CONTACTS": "Контакты",
     "LOGIN": "Войти",
-    "LOGOUT": "Выйти"
+    "LOGOUT": "Выйти",
+    "ARCHIVE": "Архив"
   },
   "REGISTRATION": {
     "PARTICIPANT_IS_REGISTERED": "Вы зарегестрированы для участия в симпозиуме!",
@@ -30,7 +31,8 @@
     "AUTHORS": "Авторы",
     "REPORT_TITLE": "Название доклада",
     "ORGANIZATION": "Организация",
-    "ANNOTATION": "Анотация"
+    "ANNOTATION": "Анотация",
+    "SHOW": "Просмотреть"
   },
   "CONTACTS": {
     "CONTACTS": "Контактs",

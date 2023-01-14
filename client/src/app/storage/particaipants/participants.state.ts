@@ -9,6 +9,7 @@ export interface IParticipant {
   phone: string;
   id?: string;
   isApproved: boolean;
+  file: string;
 }
 
 export enum State {

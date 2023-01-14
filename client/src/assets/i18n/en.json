@@ -1,6 +1,6 @@
 {
   "PROFILE": {
-    "TITLE": "DSMMPh-2021",
+    "TITLE": "DSMMPh",
     "HISTORY": "DSMMPh history",
     "REGISTRATION": "Registration",
     "PARTICIPANTS_LIST": "Participants list",
@@ -8,7 +8,8 @@
     "LETTERS": "Information letters",
     "CONTACTS": "Contacts",
     "LOGIN": "Login",
-    "LOGOUT": "Logout"
+    "LOGOUT": "Logout",
+    "ARCHIVE": "Archive"
   },
   "REGISTRATION": {
     "PARTICIPANT_IS_REGISTERED": "You are successful registered in conference!",
@@ -30,7 +31,8 @@
     "AUTHORS": "Authors",
     "REPORT_TITLE": "Report Title",
     "ORGANIZATION": "Organization",
-    "ANNOTATION": "Annotation"
+    "ANNOTATION": "Annotation",
+    "SHOW": "Show"
   },
   "CONTACTS": {
     "CONTACTS": "Contacts",

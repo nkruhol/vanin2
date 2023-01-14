@@ -9,6 +9,8 @@ export class LayoutComponent implements OnInit {
 
   constructor() { }
 
+  isCollapsed: boolean = false;
+
   ngOnInit(): void {
   }
 

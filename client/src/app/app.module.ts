@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbDropdownModule, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapseModule, NgbDropdownModule, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HomeComponent } from './pages/home/home.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
@@ -31,6 +31,7 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { ArticleRulesComponent } from './pages/article-rules/article-rules.component';
 import { NgxMaskModule } from "ngx-mask";
 import { LettersComponent } from './pages/letters/letters.component';
+import { ArchiveComponent } from './pages/archive/archive.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -51,6 +52,7 @@ export function createTranslateLoader(http: HttpClient) {
     LoginModalComponent,
     ArticleRulesComponent,
     LettersComponent,
+    ArchiveComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +73,7 @@ export function createTranslateLoader(http: HttpClient) {
     AngularFireModule.initializeApp(environment.firebase),
     NgbDropdownModule,
     NgbModalModule,
+    NgbCollapseModule,
     TranslateModule.forRoot({
       defaultLanguage: "ua",
       loader: {

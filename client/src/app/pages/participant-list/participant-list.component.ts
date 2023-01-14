@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from "@ngrx/store";
 import { selectIsUserLogged } from "src/app/storage/app/app.selectors";
-import { ApproveParticipantAction, InitParticipantsListAction } from "src/app/storage/particaipants/participants.actions";
+import { ApproveParticipantAction, GetArticleAction, InitParticipantsListAction } from "src/app/storage/particaipants/participants.actions";
 import { selectApprovingId, selectParticipants, selectState } from "src/app/storage/particaipants/participants.selectors";
 import { IParticipant, State } from "src/app/storage/particaipants/participants.state";
 import { IStore } from "src/app/storage/store";
@@ -31,7 +31,12 @@ export class ParticipantListComponent implements OnInit {
 
   approveParticipant(participant: IParticipant) {
 
-    this.store.dispatch(ApproveParticipantAction({ participant }))
+    this.store.dispatch(ApproveParticipantAction({ participant }));
+  }
+
+  openArticle(participant: IParticipant) {
+
+    this.store.dispatch(GetArticleAction({ participant }));
   }
 
 }
