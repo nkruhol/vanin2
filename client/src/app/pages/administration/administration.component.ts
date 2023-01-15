@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { filter } from 'rxjs/operators';
-import { InitAdministrationAction, UpdateSiteViewOptionsAction } from 'src/app/storage/administration/administration.actions';
-import { selectLayout, selectState } from 'src/app/storage/administration/administration.selectors';
+import { InitAdministrationAction, InitPagesEditAction, UpdatePagesEditAction, UpdateSiteViewOptionsAction } from 'src/app/storage/administration/administration.actions';
+import { selectLayout, selectPages, selectState } from 'src/app/storage/administration/administration.selectors';
 import { IStore } from "src/app/storage/store";
 
 @Component({
@@ -15,6 +15,7 @@ export class AdministrationComponent implements OnInit {
 
   state$ = this.store.select(selectState);
   layout$ = this.store.select(selectLayout);
+  pages$ = this.store.select(selectPages);
 
   constructor(
     private fb: FormBuilder,
@@ -51,6 +52,16 @@ export class AdministrationComponent implements OnInit {
 
     const formData = this.siteViewForm.value;
     this.store.dispatch(UpdateSiteViewOptionsAction({ data: formData }));
+  }
+
+  initEditPages() {
+
+    this.store.dispatch(InitPagesEditAction());
+  }
+
+  updatePages(pages) {
+
+    this.store.dispatch(UpdatePagesEditAction({ pages }));
   }
 
 }

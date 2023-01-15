@@ -16,7 +16,7 @@ import { EffectsConfiguration } from "./storage/effects-configuration";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { StoreRouterConnectingModule } from "@ngrx/router-store";
 import { CustomRouterSerializer } from "./storage/router/router.reducers";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ParticipantListComponent } from './pages/participant-list/participant-list.component';
 import { AddArticleComponent } from './pages/add-article/add-article.component';
 import { ToastsContainerComponent } from "./shared/toasts/toasts-container.component";
@@ -33,6 +33,8 @@ import { NgxMaskModule } from "ngx-mask";
 import { LettersComponent } from './pages/letters/letters.component';
 import { ArchiveComponent } from './pages/archive/archive.component';
 import { AdministrationComponent } from './pages/administration/administration.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { EditPagesComponent } from './pages/administration/edit-pages/edit-pages.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -55,11 +57,13 @@ export function createTranslateLoader(http: HttpClient) {
     LettersComponent,
     ArchiveComponent,
     AdministrationComponent,
+    EditPagesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     NgbModule,
     HttpClientModule,
     RecaptchaModule,
@@ -85,6 +89,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     }),
     NgxMaskModule.forRoot(),
+    AngularEditorModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SetAuthHeaderInterceptor, multi: true },

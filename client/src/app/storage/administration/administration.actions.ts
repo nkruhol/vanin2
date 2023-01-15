@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { AdministrationState, ILayout } from "./administration.state";
+import { AdministrationState, ILayout, IPages } from "./administration.state";
 
 export const ExtendStateAction = createAction(
   "[Administration] Extend State",
@@ -7,7 +7,7 @@ export const ExtendStateAction = createAction(
 );
 
 export const InitAdministrationAction = createAction(
-  "[Administration] Init Participants List",
+  "[Administration] Init Administration",
   props<{ tab: string }>(),
 );
 
@@ -15,3 +15,12 @@ export const UpdateSiteViewOptionsAction = createAction(
   "[Administration] Update Site View Options",
   props<{ data: ILayout }>(),
 )
+
+export const InitPagesEditAction = createAction(
+  "[Administration] Init Pages Edit",
+);
+
+export const UpdatePagesEditAction = createAction(
+  "[Administration] Update Pages Edit",
+  props<{ pages: IPages }>(),
+);

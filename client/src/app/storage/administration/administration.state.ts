@@ -8,8 +8,19 @@ export interface ILayout {
   contacts: boolean;
 }
 
+export interface IPage {
+  ua: string;
+  ru: string;
+  en: string;
+}
+
+export interface IPages {
+  [propName: string]: IPage;
+}
+
 export interface ISiteOptions {
   layout: ILayout;
+  pages: IPages;
 }
 
 export enum State {
@@ -21,4 +32,5 @@ export enum State {
 export class AdministrationState {
   state = State.NO_DATA;
   layout: ILayout;
+  pages: IPages;
 }

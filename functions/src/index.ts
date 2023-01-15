@@ -16,6 +16,9 @@ export const getSiteOptions = InitController.getSiteOptions;
 export const getSiteOptionsLayout = AdministrationController.getSiteOptionsLayout;
 export const updateSiteOptionsLayout = AdministrationController.updateSiteOptionsLayout;
 
+export const getSiteOptionsPages = AdministrationController.getSiteOptionsPages;
+export const updateSiteOptionsPages = AdministrationController.updateSiteOptionsPages;
+
 // todo
 
 export const approveParticipant = functions.https.onRequest((request, response) => {

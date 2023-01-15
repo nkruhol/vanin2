@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-1"></div>
   <div class="col-10">
-    <h3>{{ "ADMINISTRATION.ADMINISTRATION_PANEL" | translate }}</h3>
+    <h3>{{ "PROFILE.ADMINISTRATION" | translate }}</h3>
   </div>
   <div class="col-1"></div>
 </div>
@@ -109,6 +109,13 @@
             <button type="submit" class="btn btn-primary">Update</button>
 
           </form>
+        </ng-template>
+      </li>
+
+      <li [ngbNavItem]="'editPages'">
+        <a ngbNavLink>Edit Pages</a>
+        <ng-template ngbNavContent>
+          <edit-pages [pages]="pages$ | async" (init)="initEditPages()" (update)="updatePages($event)"></edit-pages>
         </ng-template>
       </li>
     </ul>

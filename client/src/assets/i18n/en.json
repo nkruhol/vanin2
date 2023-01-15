@@ -9,7 +9,8 @@
     "CONTACTS": "Contacts",
     "LOGIN": "Login",
     "LOGOUT": "Logout",
-    "ARCHIVE": "Archive"
+    "ARCHIVE": "Archive",
+    "ADMINISTRATION": "Admin Panel"
   },
   "REGISTRATION": {
     "PARTICIPANT_IS_REGISTERED": "You are successful registered in conference!",
@@ -35,10 +36,7 @@
     "SHOW": "Show"
   },
   "CONTACTS": {
-    "CONTACTS": "Contacts",
-    "DEPARTMENT": "Department of Hight Mathematic of NTU 'KhPI'",
-    "ADDRESS": "Kharkiv, Kyrpichova str., 2",
-    "EMAIL": "symposium@dsmmph.org.ua"
+    "CONTACTS": "Contacts"
   },
   "ARTICLE_RULES": {
     "TITLE": "Rules for publications",

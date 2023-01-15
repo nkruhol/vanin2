@@ -77,26 +77,63 @@ export class AdministrationEffect {
     map(newState => AdministrationActions.ExtendStateAction({ newState })),
   ))
 
-  // getArticle$ = createEffect(() => this.actions$.pipe(
-  //   ofType(AdministrationActions.GetArticleAction),
-  //   switchMap((action) => {
-    
-  //     const getArticle$ = this.http.post(environment.api + "/getArticle", action.participant).pipe(
-  //       map((res: any) => {
+  initPagesEdit$ = createEffect(() => this.actions$.pipe(
+    ofType(AdministrationActions.InitPagesEditAction),
+    switchMap((action) => {
 
-  //         console.log('res / ', res);
-  //         window.open(res.url, '_blank');
-  //         return {
-  //           state: State.DATA,
-  //         };
-  //       })
-  //     );
+      const pages$ = this.http.get(environment.api + "/getSiteOptionsPages").pipe(
+        map((res: any) => {
 
-  //     return concat(
-  //       of({ state: State.LOADING }),
-  //       getArticle$,
-  //     )
-  //   }),
-  //   map(newState => AdministrationActions.ExtendStateAction({ newState })),
-  // ));
+          return {
+            state: State.DATA,
+            pages: res.data,
+          };
+        })
+      );
+
+      return concat(
+        of({ state: State.LOADING }),
+        pages$,
+      )
+    }),
+    map(newState => AdministrationActions.ExtendStateAction({ newState })),
+  ));
+
+  updatePagesEdit$ = createEffect(() => this.actions$.pipe(
+
+    ofType(AdministrationActions.UpdatePagesEditAction),
+    switchMap(({ pages }) => {
+
+      const update$ = this.http.post(environment.api + "/updateSiteOptionsPages", pages).pipe(
+        map(res => {
+
+          this.toast.showToast({
+            text: "Update Successful!",
+            severity: ToastSeverity.SUCCESS,
+          });
+
+          return {
+            state: State.DATA,
+            pages,
+          };
+        }),
+        // catchError(err => {
+
+        //   this.toast.showToast({
+        //     text: err.message,
+        //     severity: ToastSeverity.DANGER,
+        //   });
+
+        //   return of({ state: State.DATA });
+        // }),
+      );
+
+      return concat(
+        of({ state: State.LOADING }),
+        update$,
+      )
+    }),
+    map(newState => AdministrationActions.ExtendStateAction({ newState })),
+  ))
+
 }

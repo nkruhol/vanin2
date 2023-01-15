@@ -9,7 +9,8 @@
     "CONTACTS": "Контакты",
     "LOGIN": "Войти",
     "LOGOUT": "Выйти",
-    "ARCHIVE": "Архив"
+    "ARCHIVE": "Архив",
+    "ADMINISTRATION": "Панель администратора"
   },
   "REGISTRATION": {
     "PARTICIPANT_IS_REGISTERED": "Вы зарегестрированы для участия в симпозиуме!",
@@ -35,10 +36,7 @@
     "SHOW": "Просмотреть"
   },
   "CONTACTS": {
-    "CONTACTS": "Контактs",
-    "DEPARTMENT": "Кафедра высшей математики НТУ 'ХПИ'",
-    "ADDRESS": "ул. Кирпичова 2, г. Харьков, Украина 61002",
-    "EMAIL": "symposium@dsmmph.org.ua"
+    "CONTACTS": "Контактs"
   },
   "ARTICLE_RULES": {
     "TITLE": "Оформление публикаций",

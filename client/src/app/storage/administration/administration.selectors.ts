@@ -8,6 +8,11 @@ export const selectLayout = createSelector(
   i => i.layout,
 );
 
+export const selectPages = createSelector(
+  administrationState,
+  i => i.pages,
+);
+
 export const selectState = createSelector(
   administrationState,
   i => i.state,
