@@ -3,8 +3,20 @@ import * as cors from "cors";
 import { database } from "./db.config";
 import { sendRegistrationEmail } from "./services/send-emails.service";
 import { storage } from './storage.config';
+import * as AdministrationController from "./controllers/administration.controller";
+import * as InitController from "./controllers/init.controller";
 
-const cors1 = cors({origin: true});
+export const cors1 = cors({origin: true});
+
+// Init
+export const getSiteOptions = InitController.getSiteOptions;
+
+// Administration
+
+export const getSiteOptionsLayout = AdministrationController.getSiteOptionsLayout;
+export const updateSiteOptionsLayout = AdministrationController.updateSiteOptionsLayout;
+
+// todo
 
 export const approveParticipant = functions.https.onRequest((request, response) => {
 
@@ -26,7 +38,7 @@ export const createParticipant = functions.https.onRequest((request, response) =
 
   cors1(request, response, () => {
 
-    database.ref('participants').push(request.body).then((res: any) => {
+    database.ref("participants-" + request.params[0]).push(request.body).then((res: any) => {
 
       response.send(JSON.stringify({ ok: true }));
     });
@@ -36,8 +48,6 @@ export const createParticipant = functions.https.onRequest((request, response) =
 export const participants = functions.https.onRequest((request, response) => {
 
   cors1(request, response, () => {
-
-    console.log(request.params);
 
     database.ref("participants-" + request.params[0]).once('value')
       .then(snap => {
@@ -90,7 +100,8 @@ export const getArticle = functions.https.onRequest((request, response) => {
         // img.setAttribute('src', url);
       })
       .catch((error) => {
-        // Handle any errors
+        
+        response.status(500).send(JSON.stringify({ error }));
       });
 
   });

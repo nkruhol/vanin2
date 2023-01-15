@@ -32,6 +32,7 @@ import { ArticleRulesComponent } from './pages/article-rules/article-rules.compo
 import { NgxMaskModule } from "ngx-mask";
 import { LettersComponent } from './pages/letters/letters.component';
 import { ArchiveComponent } from './pages/archive/archive.component';
+import { AdministrationComponent } from './pages/administration/administration.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -52,7 +53,8 @@ export function createTranslateLoader(http: HttpClient) {
     LoginModalComponent,
     ArticleRulesComponent,
     LettersComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    AdministrationComponent,
   ],
   imports: [
     BrowserModule,

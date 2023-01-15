@@ -30,7 +30,7 @@ export class ParticipantsEffect {
     ofType(InitParticipantsListAction),
     switchMap(() => {
 
-      const participants$ = this.http.get(environment.api + "/participants").pipe(
+      const participants$ = this.http.get(environment.api + "/participants/2023").pipe(
         map((res: IFaunaDbEntity<IParticipant>) => {
 
           return {

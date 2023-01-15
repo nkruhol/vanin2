@@ -1,13 +1,15 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { createAction } from "@ngrx/store";
 import { TranslateService } from "@ngx-translate/core";
-import { from } from "rxjs";
+import { concat, from } from "rxjs";
 import { filter, map, switchMap } from "rxjs/operators";
 import { AuthService } from "src/app/services/auth.service";
 import { LoginModalComponent } from "src/app/shared/login-modal/login-modal.component";
-import { ChangeLanguageAction, ExtendStateAction, LoginAction, LogoutAction } from "./app.actions";
+import { environment } from "src/environments/environment";
+import { ChangeLanguageAction, ExtendStateAction, InitAppAction, LoginAction, LogoutAction } from "./app.actions";
 
 @Injectable()
 export class AppEffects {
@@ -17,7 +19,31 @@ export class AppEffects {
     private modalService: NgbModal,
     private authService: AuthService,
     private translate: TranslateService,
+    private http: HttpClient,
   ) {}
+
+  init$ = createEffect(() => this.actions$.pipe(
+
+    ofType(InitAppAction),
+    switchMap(() => {
+
+      const participants$ = this.http.get(environment.api + "/getSiteOptions").pipe(
+        map((res: any) => {
+
+          return {
+            // state: State.DATA,
+            siteOptions: res.data,
+          };
+        })
+      );
+
+      return concat(
+        // of({ state: State.LOADING }),
+        participants$,
+      )
+    }),
+    map(newState => ExtendStateAction({ newState })),
+  ))
 
   login$ = createEffect(() => this.actions$.pipe(
 

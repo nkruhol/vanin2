@@ -32,6 +32,7 @@
             {{ row.articleName }}
             <br/>
             <a class="badge badge-pill badge-primary"
+              *ngIf="row.file"
               (click)="openArticle(row)" aria-disabled="true">{{ "PARTICIPANTS.SHOW" | translate }}</a>
           </td>
           <td>{{ row.organization }}</td>

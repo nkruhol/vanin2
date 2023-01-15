@@ -1,4 +1,5 @@
 import { AddArticleEffect } from "./add-article/add-article.effects";
+import { AdministrationEffect } from "./administration/administration.effects";
 import { AppEffects } from "./app/app.effects";
 import { ArchiveEffect } from "./archive/archive.effects";
 import { ParticipantsEffect } from "./particaipants/participants.effects";
@@ -10,4 +11,5 @@ export const EffectsConfiguration = [
   RegistrationEffect,
   AddArticleEffect,
   ArchiveEffect,
+  AdministrationEffect,
 ];

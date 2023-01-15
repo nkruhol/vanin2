@@ -1,5 +1,6 @@
 import { RouterState } from "@angular/router";
 import { AddArticleState } from "./add-article/add-article.state";
+import { AdministrationState } from "./administration/administration.state";
 import { AppState } from "./app/app.state";
 import { ArchiveState } from "./archive/archive.state";
 import { ParticipantsState } from "./particaipants/participants.state";
@@ -11,5 +12,6 @@ export interface IStore {
   participants: ParticipantsState,
   registration: RegistrationState,
   addArticle: AddArticleState,
-  archive: ArchiveState
+  archive: ArchiveState,
+  administration: AdministrationState,
 }

@@ -1,32 +1,38 @@
 <app-header></app-header>
 
 <div class="sidebar">
-  <div class="nav-item">
+  <div class="nav-item"
+    *ngIf="(layoutOptions$ | async)?.history">
     <a class="nav-link font-size-16"
       routerLinkActive="active"
       routerLink="/history">{{ "PROFILE.HISTORY" | translate }}</a>
   </div>
-  <!-- <div class="nav-item">
+  <div class="nav-item"
+    *ngIf="(layoutOptions$ | async)?.registration">
     <a class="nav-link font-size-16"
       routerLinkActive="active"
       routerLink="/registration">{{ "PROFILE.REGISTRATION" | translate }}</a>
-  </div> -->
-  <div class="nav-item">
+  </div>
+  <div class="nav-item"
+    *ngIf="(layoutOptions$ | async)?.participants">
     <a class="nav-link font-size-16"
       routerLinkActive="active"
       routerLink="/participants">{{ "PROFILE.PARTICIPANTS_LIST" | translate }}</a>
   </div>
-  <!-- <div class="nav-item">
+  <div class="nav-item"
+    *ngIf="(layoutOptions$ | async)?.letters">
     <a class="nav-link font-size-16"
       routerLinkActive="active"
       routerLink="/letters">{{ "PROFILE.LETTERS" | translate }}</a>
-  </div> -->
-  <!-- <div class="nav-item">
+  </div>
+  <div class="nav-item"
+    *ngIf="(layoutOptions$ | async)?.article_rules">
     <a class="nav-link font-size-16"
       routerLinkActive="active"
       routerLink="/rules">{{ "PROFILE.ARTICLE_RULES" | translate }}</a>
-  </div> -->
-  <div class="nav-item">
+  </div>
+  <div class="nav-item"
+    *ngIf="(layoutOptions$ | async)?.archive">
     <a class="nav-link font-size-16"
       [attr.aria-expanded]="!isCollapsed"
       (click)="collapse.toggle()"
@@ -41,7 +47,8 @@
       </div>
     </div>
   </div>
-  <div class="nav-item">
+  <div class="nav-item"
+    *ngIf="(layoutOptions$ | async)?.contacts">
     <a class="nav-link font-size-16"
       routerLinkActive="active"
       routerLink="/contacts">{{ "PROFILE.CONTACTS" | translate }}</a>

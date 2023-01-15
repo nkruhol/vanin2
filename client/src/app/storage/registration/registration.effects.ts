@@ -35,7 +35,7 @@ export class RegistrationEffect {
     ofType(CreateParticipantAction),
     switchMap(({ form }) => {
 
-      const registration$ = this.http.post(environment.api + "/createParticipant", form).pipe(
+      const registration$ = this.http.post(environment.api + "/createParticipant/2023", form).pipe(
         map(res => {
 
           this.toast.showToast({

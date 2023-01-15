@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddArticleComponent } from "./pages/add-article/add-article.component";
+import { AdministrationComponent } from './pages/administration/administration.component';
 import { ArchiveComponent } from './pages/archive/archive.component';
 import { ArticleRulesComponent } from "./pages/article-rules/article-rules.component";
 import { ContactsComponent } from "./pages/contacts/contacts.component";
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: "rules",
     component: ArticleRulesComponent,
+  },
+  {
+    path: "administration",
+    component: AdministrationComponent,
   },
   {
     path: "dsmmph/:year",
