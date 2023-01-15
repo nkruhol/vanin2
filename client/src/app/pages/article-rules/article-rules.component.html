@@ -6,29 +6,18 @@
   <div class="col-1"></div>
 </div>
 
-<div class="row">
-  <div class="col-1"></div>
-  <div class="col-10">
-    <p>{{ "ARTICLE_RULES.TEXT" | translate }} -
-      <a href="http://jnam.knu.ua/index.php/jnam/about">"{{ "ARTICLE_RULES.NAME" | translate }}"</a>
-    </p>
+<ng-container *ngIf="(language$ | async) == LanguageEnum.RU then ru"></ng-container>
+<ng-container *ngIf="(language$ | async) == LanguageEnum.UA then ua"></ng-container>
+<ng-container *ngIf="(language$ | async) == LanguageEnum.EN then en"></ng-container>
 
-    <h4>{{ "ARTICLE_RULES.REQUIREMENTS_TITLE" | translate }}:</h4>
+<ng-template #ru>
+  <div [innerHTML]="(page$ | async)?.ru"></div>
+</ng-template>
 
-    <ul>
-      <li>{{ "ARTICLE_RULES.REQUIREMENT_1" | translate }}</li>
-      <li>{{ "ARTICLE_RULES.REQUIREMENT_2" | translate }}</li>
-      <li>{{ "ARTICLE_RULES.REQUIREMENT_3" | translate }}</li>
-      <li>{{ "ARTICLE_RULES.REQUIREMENT_4" | translate }}</li>
-    </ul>
+<ng-template #ua>
+  <div [innerHTML]="(page$ | async)?.ua"></div>
+</ng-template>
 
-    <p>{{ "ARTICLE_RULES.EMAIL_TEXT" | translate }}: symposium@dsmmph.org.ua</p>
-
-    <p>
-      <span>{{ "ARTICLE_RULES.LINK_TEXT" | translate }} - </span>
-      <a href="../../../assets/files/DSMMPh-2021_erticle_rules.doc"
-        download>{{ "ARTICLE_RULES.LINK" | translate }}</a>
-    </p>
-  </div>
-  <div class="col-1"></div>
-</div>
+<ng-template #en>
+  <div [innerHTML]="(page$ | async)?.en"></div>
+</ng-template>
