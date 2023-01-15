@@ -1,8 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
+import { environment } from 'src/environments/environment';
 import { ExtendStateAction } from "../storage/app/app.actions";
 import { IStore } from "../storage/store";
 
@@ -27,6 +29,7 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone, // NgZone service to remove outside scope warning
     private store: Store<IStore>,
+    private http: HttpClient,
   ) {
     /* Saving user data in localstorage when
     logged in and setting up null when logged out */
@@ -90,5 +93,10 @@ export class AuthService {
   getUser() {
 
     return JSON.parse(localStorage.getItem('user'));
+  }
+
+  SignUp(email, password) {
+
+    return this.http.post(environment.api + "/registration", { email, password})
   }
 }

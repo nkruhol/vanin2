@@ -22,3 +22,7 @@ export const LoginAction = createAction(
 export const LogoutAction = createAction(
   "[App] Logout"
 );
+
+export const RegistrationAction = createAction(
+  "[App] Registration"
+);

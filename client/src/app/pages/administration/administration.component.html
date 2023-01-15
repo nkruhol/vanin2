@@ -118,6 +118,13 @@
           <edit-pages [pages]="pages$ | async" (init)="initEditPages()" (update)="updatePages($event)"></edit-pages>
         </ng-template>
       </li>
+
+      <li [ngbNavItem]="'users'">
+        <a ngbNavLink>Users</a>
+        <ng-template ngbNavContent>
+          <users (init)="initUsers()"></users>
+        </ng-template>
+      </li>
     </ul>
     
     <div [ngbNavOutlet]="nav" class="mt-2"></div>

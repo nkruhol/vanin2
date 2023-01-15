@@ -1,10 +1,10 @@
 import * as functions from "firebase-functions";
 import * as cors from "cors";
-import { database } from "./db.config";
 import { sendRegistrationEmail } from "./services/send-emails.service";
-import { storage } from './storage.config';
 import * as AdministrationController from "./controllers/administration.controller";
 import * as InitController from "./controllers/init.controller";
+import { database } from "./init";
+import { storage } from "./storage.config";
 
 export const cors1 = cors({origin: true});
 
@@ -18,6 +18,9 @@ export const updateSiteOptionsLayout = AdministrationController.updateSiteOption
 
 export const getSiteOptionsPages = AdministrationController.getSiteOptionsPages;
 export const updateSiteOptionsPages = AdministrationController.updateSiteOptionsPages;
+
+export const getUsers = AdministrationController.getUsers;
+export const registration = AdministrationController.registration;
 
 // todo
 

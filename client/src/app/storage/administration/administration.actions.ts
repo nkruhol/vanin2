@@ -24,3 +24,7 @@ export const UpdatePagesEditAction = createAction(
   "[Administration] Update Pages Edit",
   props<{ pages: IPages }>(),
 );
+
+export const InitUsersAction = createAction(
+  "[Administration] Init Users",
+);

@@ -136,4 +136,26 @@ export class AdministrationEffect {
     map(newState => AdministrationActions.ExtendStateAction({ newState })),
   ))
 
+  initUsers$ = createEffect(() => this.actions$.pipe(
+    ofType(AdministrationActions.InitUsersAction),
+    switchMap((action) => {
+
+      const users$ = this.http.get(environment.api + "/getUsers").pipe(
+        map((res: any) => {
+
+          return {
+            state: State.DATA,
+            users: res.data,
+          };
+        })
+      );
+
+      return concat(
+        of({ state: State.LOADING }),
+        users$,
+      )
+    }),
+    map(newState => AdministrationActions.ExtendStateAction({ newState })),
+  ));
+
 }

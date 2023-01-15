@@ -1,6 +1,6 @@
 import * as functions from "firebase-functions";
 import { cors1 } from "..";
-import { database } from "../db.config";
+import { database } from "../init";
 
 export const getSiteOptions = functions.https.onRequest((request, response) => {
 

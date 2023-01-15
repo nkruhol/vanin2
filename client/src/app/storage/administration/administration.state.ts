@@ -33,4 +33,5 @@ export class AdministrationState {
   state = State.NO_DATA;
   layout: ILayout;
   pages: IPages;
+  users: any[];
 }
