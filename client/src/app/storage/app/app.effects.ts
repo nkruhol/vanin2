@@ -37,21 +37,15 @@ export class AppEffects {
         ? "?uid=" + user.uid
         : "";
 
-      const participants$ = this.http.get(environment.api + "/getSiteOptions" + queryPaerams).pipe(
+      return this.http.get(environment.api + "/getSiteOptions" + queryPaerams).pipe(
         map((res: any) => {
 
           return {
-            // state: State.DATA,
             siteOptions: res.data,
             user: res.user,
           };
         })
       );
-
-      return concat(
-        // of({ state: State.LOADING }),
-        participants$,
-      )
     }),
     map(newState => ExtendStateAction({ newState })),
   ))

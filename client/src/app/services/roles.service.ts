@@ -3,7 +3,7 @@ import { select, Store } from "@ngrx/store";
 import { of } from "rxjs";
 import { filter, map } from "rxjs/operators";
 import { Roles } from "../storage/administration/administration.state";
-import { selectUser } from "../storage/app/app.selectors";
+import { selectUserInfo } from "../storage/app/app.selectors";
 import { IStore } from "../storage/store";
 
 
@@ -23,7 +23,7 @@ export class RoleService {
         if (Array.isArray(value)) {
 
             return this.store.pipe(
-                select(selectUser),
+                select(selectUserInfo),
                 filter(i => !!i),
                 map(user => {
 
@@ -33,7 +33,7 @@ export class RoleService {
         }
 
         return this.store.pipe(
-            select(selectUser),
+            select(selectUserInfo),
             filter(i => !!i),
             map(user => (user.role & value) == value)
         );

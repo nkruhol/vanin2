@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-8">
+
+    <h3>{{ "CABINET.USER_INFO_FORM_TITLE" | translate }}</h3>
+    <form [formGroup]="userInfoForm"
+      novalidate
+      (submit)="updateUserInfo()">
+      <div class="mb-3">
+        <label for="firstName" class="form-label">{{ "REGISTRATION.FIRST_NAME" | translate }}</label>
+        <input type="text"
+          class="form-control"
+          id="firstName"
+          formControlName="firstName">
+      </div>
+      <div class="mb-3">
+        <label for="lastName" class="form-label">{{ "REGISTRATION.LAST_NAME" | translate }}</label>
+        <input type="text"
+          class="form-control"
+          id="lastName"
+          formControlName="lastName">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">{{ "REGISTRATION.EMAIL" | translate }}</label>
+        <input type="email"
+          class="form-control"
+          id="email"
+          formControlName="email">
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">{{ "REGISTRATION.PHONE_NUMBER" | translate }}</label>
+        <input type="phone"
+          class="form-control"
+          id="phone"
+          formControlName="phone">
+      </div>
+      <div class="mb-3">
+        <label for="orgqnization" class="form-label">{{ "REGISTRATION.ORGANIZATION" | translate }}</label>
+        <input type="text"
+          class="form-control"
+          id="organization"
+          formControlName="organization">
+      </div>
+      <div class="mb-3">
+        <label for="googleAcademy" class="form-label">{{ "REGISTRATION.GOOGLE_ACADEMY" | translate }}</label>
+        <input type="text"
+          class="form-control"
+          id="googleAcademy"
+          formControlName="googleAcademy">
+      </div>
+      <div class="mb-3">
+        <label for="orcid" class="form-label">{{ "REGISTRATION.ORCID" | translate }}</label>
+        <input type="text"
+          class="form-control"
+          id="orcid"
+          formControlName="orcid">
+      </div>
+      <button type="submit"
+        class="btn btn-primary">
+          {{ "CABINET.UPDATE_BTN_TITLE" | translate }}
+          <div class="spinner-border spinner-sm" role="status" *ngIf="state == State.UPDATING">
+            <span class="visually-hidden"></span>
+          </div>
+      </button>
+
+    </form>
+  </div>
+  <div class="col-2"></div>
+</div>

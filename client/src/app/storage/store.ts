@@ -3,6 +3,7 @@ import { AddArticleState } from "./add-article/add-article.state";
 import { AdministrationState } from "./administration/administration.state";
 import { AppState } from "./app/app.state";
 import { ArchiveState } from "./archive/archive.state";
+import { CabinetState } from "./cabinet/cabinet.state";
 import { ParticipantsState } from "./particaipants/participants.state";
 import { RegistrationState } from "./registration/registration.state";
 
@@ -14,4 +15,5 @@ export interface IStore {
   addArticle: AddArticleState,
   archive: ArchiveState,
   administration: AdministrationState,
+  cabinet: CabinetState,
 }

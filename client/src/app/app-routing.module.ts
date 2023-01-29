@@ -4,6 +4,7 @@ import { AddArticleComponent } from "./pages/add-article/add-article.component";
 import { AdministrationComponent } from './pages/administration/administration.component';
 import { ArchiveComponent } from './pages/archive/archive.component';
 import { ArticleRulesComponent } from "./pages/article-rules/article-rules.component";
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
 import { ContactsComponent } from "./pages/contacts/contacts.component";
 import { HistoryComponent } from "./pages/history/history.component";
 import { HomeComponent } from "./pages/home/home.component";
@@ -48,6 +49,10 @@ const routes: Routes = [
   {
     path: "administration",
     component: AdministrationComponent,
+  },
+  {
+    path: "cabinet",
+    component: CabinetComponent,
   },
   {
     path: "dsmmph/:year",

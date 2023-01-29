@@ -9,6 +9,11 @@
             <a class="nav-link"
               routerLink="/administration">{{ "PROFILE.ADMINISTRATION" | translate }}</a>
           </li>
+          <li class="nav-item nav-item--cabinet"
+            *ngIf="isUserLogged$ | async">
+            <a class="nav-link"
+              routerLink="/cabinet">{{ "PROFILE.CABINET" | translate }}</a>
+          </li>
           <li class="nav-item nav-item--administration"
             *ngIf="!(isUserLogged$ | async)">
             <a class="nav-link"

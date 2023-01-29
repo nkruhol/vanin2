@@ -37,6 +37,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { EditPagesComponent } from './pages/administration/edit-pages/edit-pages.component';
 import { UsersComponent } from './pages/administration/users/users.component';
 import { RegistrationModalComponent } from './shared/registration-modal/registration-modal.component';
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
+import { UserInfoComponent } from './pages/cabinet/user-info/user-info.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -62,6 +64,8 @@ export function createTranslateLoader(http: HttpClient) {
     EditPagesComponent,
     UsersComponent,
     RegistrationModalComponent,
+    CabinetComponent,
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,

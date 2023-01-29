@@ -6,14 +6,15 @@ export enum LanguageEnum {
   EN = "en",
 }
 
-export interface IUserWithRole {
+export interface IUserInfo {
   email: string;
   role: number;
+  id: string;
 }
 
 export class AppState {
   language = LanguageEnum.UA;
   isUserLogged: boolean;
   siteOptions: ISiteOptions;
-  user: IUserWithRole;
+  user: IUserInfo;
 }

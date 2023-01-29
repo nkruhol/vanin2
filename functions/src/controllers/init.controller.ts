@@ -23,8 +23,6 @@ export const getSiteOptions = functions.https.onRequest((request, response) => {
                 const keys = Object.keys(users);
                 
                 const user = users[keys[0]];
-                delete user.id;
-                delete user.uid;
 
                 response.send(JSON.stringify({ ok: true, data, user }));
                 return;

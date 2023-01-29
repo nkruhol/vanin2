@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-10">
+    <h3>{{ "PROFILE.ADMINISTRATION" | translate }}</h3>
+  </div>
+  <div class="col-1"></div>
+</div>
+
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-10">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+      <li [ngbNavItem]="'userInfo'">
+        <a ngbNavLink>{{ "CABINET.USER_INFORMATION" | translate }}</a>
+        <ng-template ngbNavContent>
+          <div *ngIf="!(user$ | async)"> LOADING </div>
+          <user-info *ngIf="!!(user$ | async)"
+            [user]="user$ | async"
+            [state]="userInfoState$ | async"
+            (update)="updateUserInfo($event)">
+          </user-info>
+        </ng-template>
+      </li>
+
+      <li [ngbNavItem]="'conferenceDetails'">
+        <a ngbNavLink>{{ "CABINET.CONFERENCE_DETAILS" | translate }}</a>
+        <ng-template ngbNavContent>
+
+        </ng-template>
+      </li>
+
+      <li [ngbNavItem]="'history'">
+        <a ngbNavLink>{{ "CABINET.HISTORY" | translate }}</a>
+        <ng-template ngbNavContent>
+
+        </ng-template>
+      </li>
+    </ul>
+    
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+  </div>
+  <div class="col-1"></div>
+</div>
