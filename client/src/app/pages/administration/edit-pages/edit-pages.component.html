@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-3">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Page</label>
+      </div>
+      <select class="custom-select"
+        id="inputGroupSelect01"
+        [(ngModel)]="currentPage"
+        (change)="onCurrentPageSelect()">
+        <option *ngFor="let page of pagesArr" [value]="page">{{ page }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Language</label>
+      </div>
+      <select class="custom-select"
+        id="inputGroupSelect01"
+        [(ngModel)]="currentLanguage"
+        (change)="onCurrentLanguageSelect()">
+        <option *ngFor="let lang of pageLanguagesArr" [value]="lang">{{ lang }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <button class="btn btn-primary" (click)="onUpdate()">Update</button>
+  </div>
+</div>
+
+<div *ngIf="currentPage && currentLanguage">
+  <angular-editor [(ngModel)]="currentPageText" [config]="editorConfig"></angular-editor>
+</div>

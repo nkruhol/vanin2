@@ -1,3 +1,4 @@
+import { ISiteOptions } from "../administration/administration.state";
 
 export enum LanguageEnum {
   UA = "ua",
@@ -7,4 +8,5 @@ export enum LanguageEnum {
 export class AppState {
   language = LanguageEnum.UA;
   isUserLogged: boolean;
+  siteOptions: ISiteOptions;
 }

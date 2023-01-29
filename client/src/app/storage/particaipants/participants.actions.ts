@@ -14,3 +14,8 @@ export const ApproveParticipantAction = createAction(
   "[Participants] Approve Participant",
   props<{ participant: IParticipant }>(),
 )
+
+export const GetArticleAction = createAction(
+  "[Participants] Get Article",
+  props<{ participant: IParticipant }>(),
+)

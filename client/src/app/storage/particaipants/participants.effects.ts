@@ -8,7 +8,7 @@ import { ToastSeverity } from "src/app/shared/toasts/toast";
 import { ToastsService } from "src/app/shared/toasts/toasts.service";
 import { environment } from "src/environments/environment";
 import { IStore } from "../store";
-import { ApproveParticipantAction, ExtendStateAction, InitParticipantsListAction } from "./participants.actions";
+import { ApproveParticipantAction, ExtendStateAction, GetArticleAction, InitParticipantsListAction } from "./participants.actions";
 import { selectParticipants } from "./participants.selectors";
 import { IParticipant, State } from "./participants.state";
 
@@ -30,7 +30,7 @@ export class ParticipantsEffect {
     ofType(InitParticipantsListAction),
     switchMap(() => {
 
-      const participants$ = this.http.get(environment.api + "/participants").pipe(
+      const participants$ = this.http.get(environment.api + "/participants/2023").pipe(
         map((res: IFaunaDbEntity<IParticipant>) => {
 
           return {
@@ -83,4 +83,27 @@ export class ParticipantsEffect {
         );
     }),
   ))
+
+  getArticle$ = createEffect(() => this.actions$.pipe(
+    ofType(GetArticleAction),
+    switchMap((action) => {
+    
+      const getArticle$ = this.http.post(environment.api + "/getArticle", action.participant).pipe(
+        map((res: any) => {
+
+          console.log('res / ', res);
+          window.open(res.url, '_blank');
+          return {
+            state: State.DATA,
+          };
+        })
+      );
+
+      return concat(
+        of({ state: State.LOADING }),
+        getArticle$,
+      )
+    }),
+    map(newState => ExtendStateAction({ newState })),
+  ));
 }

@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">User</th>
+          <th scope="col" class="header-text">SuperAdmin</th>
+          <th scope="col" class="header-text">Admin</th>
+          <th scope="col" class="header-text">Reviewer</th>
+          <th scope="col" class="header-text">User</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td scope="row">{{ user.email }}</td>
+          <td class="text-center">
+            <input type="checkbox"
+              id="superAdmin"
+              [ngModel]="initRole(Roles.SuperAdmin, user)"
+              (ngModelChange)="updateRole($event, Roles.SuperAdmin, user)">
+          </td>
+          <td class="text-center">
+            <input type="checkbox"
+              id="admin"
+              [ngModel]="initRole(Roles.Admin, user)"
+              (ngModelChange)="updateRole($event, Roles.Admin, user)">
+          </td>
+          <td class="text-center">
+            <input type="checkbox"
+              id="reviewer"
+              [ngModel]="initRole(Roles.Reviewer, user)"
+              (ngModelChange)="updateRole($event, Roles.Reviewer, user)">
+          </td>
+          <td class="text-center">
+            <input type="checkbox"
+              id="user"
+              [ngModel]="initRole(Roles.User, user)"
+              (ngModelChange)="updateRole($event, Roles.User, user)">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
+</div>

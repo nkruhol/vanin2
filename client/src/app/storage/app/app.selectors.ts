@@ -12,3 +12,8 @@ export const selectIsUserLogged = createSelector(
   appState,
   i => i.isUserLogged,
 );
+
+export const selectSiteOptions = createSelector(
+  appState,
+  i => i.siteOptions,
+);

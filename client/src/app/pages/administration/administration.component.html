@@ -1,0 +1,134 @@
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-10">
+    <h3>{{ "PROFILE.ADMINISTRATION" | translate }}</h3>
+  </div>
+  <div class="col-1"></div>
+</div>
+
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-10">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+      <li [ngbNavItem]="'siteView'">
+        <a ngbNavLink>Site View Property</a>
+        <ng-template ngbNavContent>
+
+          <form [formGroup]="siteViewForm"
+            novalidate
+            (submit)="update()">
+
+            <div class="row">
+              <div class="col-6">
+                <ul class="list-group">
+                  <li class="list-group-item active">View next layouts:</li>
+                  <li class="list-group-item">
+                    History:
+                    <div class="input-group-prepend administration-checkbox">
+                      <div class="input-group-text">
+                        <input type="checkbox"
+                          id="history"
+                          formControlName="history">
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="list-group-item">
+                    Registration:
+                    <div class="input-group-prepend administration-checkbox">
+                      <div class="input-group-text">
+                        <input type="checkbox"
+                          id="registration"
+                          formControlName="registration">
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="list-group-item">
+                    Participants List:
+                    <div class="input-group-prepend administration-checkbox">
+                      <div class="input-group-text">
+                        <input type="checkbox"
+                          id="participants_list"
+                          formControlName="participants_list">
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="list-group-item">
+                    Letters:
+                    <div class="input-group-prepend administration-checkbox">
+                      <div class="input-group-text">
+                        <input type="checkbox"
+                          id="letters"
+                          formControlName="letters">
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="list-group-item">
+                    Article Rules:
+                    <div class="input-group-prepend administration-checkbox">
+                      <div class="input-group-text">
+                        <input type="checkbox"
+                          id="article_rules"
+                          formControlName="article_rules">
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="list-group-item">
+                    Archive:
+                    <div class="input-group-prepend administration-checkbox">
+                      <div class="input-group-text">
+                        <input type="checkbox"
+                          id="archive"
+                          formControlName="archive">
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="list-group-item">
+                    Contacts:
+                    <div class="input-group-prepend administration-checkbox">
+                      <div class="input-group-text">
+                        <input type="checkbox"
+                          id="contacts"
+                          formControlName="contacts">
+                      </div>
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+              <div class="col-6">
+              </div>
+            </div>
+
+            <br>
+            <button type="submit" class="btn btn-primary">Update</button>
+
+          </form>
+        </ng-template>
+      </li>
+
+      <li [ngbNavItem]="'editPages'"
+        *ngIf="roleService.can$(Roles.Admin) | async">
+        <a ngbNavLink>Edit Pages</a>
+        <ng-template ngbNavContent>
+          <edit-pages [pages]="pages$ | async" (init)="initEditPages()" (update)="updatePages($event)"></edit-pages>
+        </ng-template>
+      </li>
+
+      <li [ngbNavItem]="'users'">
+        <a ngbNavLink>Users</a>
+        <ng-template ngbNavContent>
+          <users [users]="users$ | async" (init)="initUsers()" (updateUser)="updateUser($event)"></users>
+        </ng-template>
+      </li>
+    </ul>
+    
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+  </div>
+  <div class="col-1"></div>
+</div>

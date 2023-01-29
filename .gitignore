@@ -68,3 +68,5 @@ node_modules/
 info.txt
 
 functions/src/config.ts
+client/package-lock.json
+functions/package-lock.json

@@ -6,12 +6,18 @@
   <div class="col-1"></div>
 </div>
 
-<div class="row">
-  <div class="col-1"></div>
-  <div class="col-10">
-    <div>{{ "CONTACTS.DEPARTMENT" | translate }}</div>
-    <div>{{ "CONTACTS.ADDRESS" | translate }}</div>
-    <div>{{ "CONTACTS.EMAIL" | translate }}</div>
-  </div>
-  <div class="col-1"></div>
-</div>
+<ng-container *ngIf="(language$ | async) == LanguageEnum.RU then ru"></ng-container>
+<ng-container *ngIf="(language$ | async) == LanguageEnum.UA then ua"></ng-container>
+<ng-container *ngIf="(language$ | async) == LanguageEnum.EN then en"></ng-container>
+
+<ng-template #ru>
+  <div [innerHTML]="(page$ | async)?.ru"></div>
+</ng-template>
+
+<ng-template #ua>
+  <div [innerHTML]="(page$ | async)?.ua"></div>
+</ng-template>
+
+<ng-template #en>
+  <div [innerHTML]="(page$ | async)?.en"></div>
+</ng-template>

@@ -6,6 +6,10 @@ export const ExtendStateAction = createAction(
   props<{ newState: Partial<AppState> }>(),
 );
 
+export const InitAppAction = createAction(
+  "[App] Init App",
+);
+
 export const ChangeLanguageAction = createAction(
   "[App] Change Language",
   props<{ language: LanguageEnum }>(),
@@ -17,4 +21,8 @@ export const LoginAction = createAction(
 
 export const LogoutAction = createAction(
   "[App] Logout"
+);
+
+export const RegistrationAction = createAction(
+  "[App] Registration"
 );

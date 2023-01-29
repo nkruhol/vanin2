@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbDropdownModule, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapseModule, NgbDropdownModule, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HomeComponent } from './pages/home/home.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
@@ -16,7 +16,7 @@ import { EffectsConfiguration } from "./storage/effects-configuration";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { StoreRouterConnectingModule } from "@ngrx/router-store";
 import { CustomRouterSerializer } from "./storage/router/router.reducers";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ParticipantListComponent } from './pages/participant-list/participant-list.component';
 import { AddArticleComponent } from './pages/add-article/add-article.component';
 import { ToastsContainerComponent } from "./shared/toasts/toasts-container.component";
@@ -31,6 +31,12 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { ArticleRulesComponent } from './pages/article-rules/article-rules.component';
 import { NgxMaskModule } from "ngx-mask";
 import { LettersComponent } from './pages/letters/letters.component';
+import { ArchiveComponent } from './pages/archive/archive.component';
+import { AdministrationComponent } from './pages/administration/administration.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { EditPagesComponent } from './pages/administration/edit-pages/edit-pages.component';
+import { UsersComponent } from './pages/administration/users/users.component';
+import { RegistrationModalComponent } from './shared/registration-modal/registration-modal.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -51,11 +57,17 @@ export function createTranslateLoader(http: HttpClient) {
     LoginModalComponent,
     ArticleRulesComponent,
     LettersComponent,
+    ArchiveComponent,
+    AdministrationComponent,
+    EditPagesComponent,
+    UsersComponent,
+    RegistrationModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     NgbModule,
     HttpClientModule,
     RecaptchaModule,
@@ -71,6 +83,7 @@ export function createTranslateLoader(http: HttpClient) {
     AngularFireModule.initializeApp(environment.firebase),
     NgbDropdownModule,
     NgbModalModule,
+    NgbCollapseModule,
     TranslateModule.forRoot({
       defaultLanguage: "ua",
       loader: {
@@ -80,6 +93,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     }),
     NgxMaskModule.forRoot(),
+    AngularEditorModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SetAuthHeaderInterceptor, multi: true },

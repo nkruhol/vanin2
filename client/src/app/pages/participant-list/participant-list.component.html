@@ -28,7 +28,13 @@
         <tr *ngFor="let row of (participants$ | async); index as index$">
           <td>{{ index$ + 1 }}</td>
           <td>{{ row.coAuthors }}</td>
-          <td>{{ row.articleName }}</td>
+          <td>
+            {{ row.articleName }}
+            <br/>
+            <a class="badge badge-pill badge-primary"
+              *ngIf="row.file"
+              (click)="openArticle(row)" aria-disabled="true">{{ "PARTICIPANTS.SHOW" | translate }}</a>
+          </td>
           <td>{{ row.organization }}</td>
           <td>{{ row.description }}</td>
           <ng-container *ngIf="isUserLogged$ | async">

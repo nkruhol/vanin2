@@ -1,9 +1,19 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light navbar-color">
     <div class="container-fluid">
-      <a class="navbar-brand font-size-24" routerLink="/">{{ "PROFILE.TITLE" | translate }}</a>
+      <a class="navbar-brand font-size-24" routerLink="/">{{ "PROFILE.TITLE" | translate }} - 2023</a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item nav-item--administration"
+            *ngIf="isUserLogged$ | async">
+            <a class="nav-link"
+              routerLink="/administration">{{ "PROFILE.ADMINISTRATION" | translate }}</a>
+          </li>
+          <li class="nav-item nav-item--administration"
+            *ngIf="!(isUserLogged$ | async)">
+            <a class="nav-link"
+              (click)="registration()">{{ "PROFILE.REGISTRATION" | translate }}</a>
+          </li>
           <li class="nav-item nav-item--logout">
             <a class="nav-link"
               *ngIf="isUserLogged$ | async"
