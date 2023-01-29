@@ -58,7 +58,6 @@ export class RegistrationComponent implements OnDestroy {
 
   resolved(e) {
 
-    console.log(e);
     this.notRobot = true;
   }
 

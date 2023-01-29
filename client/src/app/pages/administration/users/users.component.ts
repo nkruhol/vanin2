@@ -17,37 +17,17 @@ export class UsersComponent implements OnInit, OnChanges {
   @Input() users: IUser[];
   @Output() init = new EventEmitter();
   @Output() updateUser = new EventEmitter<IUser>()
-  // @Output() update = new EventEmitter<IPages>();
-
 
   Roles = Roles;
 
-  constructor(
-    // private fb: FormBuilder,
-  ) {}
-
-  // editPageForm = this.fb.group({
-  //   startPage: [null],
-  // })
-
-  // editorConfig = {
-  //   editable: true,
-  //   minHight: '400px'
-  // }
+  constructor() {}
 
   ngOnInit() {
 
     this.init.emit();
-
-    // this.editPageForm.valueChanges.pipe().subscribe(i => {
-
-    //   console.log(i.startPage);
-    // })
   }
 
   ngOnChanges() {
-
-    console.log(777, this.users);
 
     if (!this.users) {
 

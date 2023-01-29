@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Store } from "@ngrx/store";
+import { select, Store } from "@ngrx/store";
 import { of } from "rxjs";
-import { map } from "rxjs/operators";
+import { filter, map } from "rxjs/operators";
 import { Roles } from "../storage/administration/administration.state";
+import { selectUser } from "../storage/app/app.selectors";
 import { IStore } from "../storage/store";
 
 
@@ -15,19 +16,26 @@ export class RoleService {
         private store: Store<IStore>,
     ) {}
 
-    can$(role: Roles | Roles[]) {
+    can$(value: Roles | Roles[]) {
 
-        if (!role) return of(false);
+        if (!value) return of(false);
 
-        if (Array.isArray(role)) {
+        if (Array.isArray(value)) {
 
             return this.store.pipe(
-                map(i => true),
+                select(selectUser),
+                filter(i => !!i),
+                map(user => {
+
+                    return value.some(role => (user.role & role) == role);
+                })
             );
         }
 
         return this.store.pipe(
-            map(i => true),
+            select(selectUser),
+            filter(i => !!i),
+            map(user => (user.role & value) == value)
         );
     }
 

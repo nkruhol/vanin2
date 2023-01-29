@@ -17,3 +17,8 @@ export const selectSiteOptions = createSelector(
   appState,
   i => i.siteOptions,
 );
+
+export const selectUser = createSelector(
+  appState,
+  i => i.user,
+);

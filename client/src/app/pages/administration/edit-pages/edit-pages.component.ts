@@ -40,11 +40,6 @@ export class EditPagesComponent implements OnInit, OnChanges {
   ngOnInit() {
 
     this.init.emit();
-
-    this.editPageForm.valueChanges.pipe().subscribe(i => {
-
-      console.log(i.startPage);
-    })
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -60,8 +55,6 @@ export class EditPagesComponent implements OnInit, OnChanges {
   }
 
   onCurrentPageSelect() {
-
-    console.log('currentPage', this.currentPage);
 
     this.pageLanguagesArr = Object.keys(this.pages[this.currentPage]);
     this.currentLanguage = 'ua';

@@ -111,10 +111,10 @@ export const registration = functions.https.onRequest((request, response) => {
     auth.createUser(request.body)
       .then(newUser => {
 
-        console.log(newUser);
         return database.ref("users").push({
           email: newUser.email,
           uid: newUser.uid,
+          role: 8,
         })
       })
       .then(() => {

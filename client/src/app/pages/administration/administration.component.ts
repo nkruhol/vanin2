@@ -48,7 +48,6 @@ export class AdministrationComponent implements OnInit {
     )
       .subscribe(res => {
 
-        console.log('result = ', res);
         this.siteViewForm.patchValue(res);
       })
   }

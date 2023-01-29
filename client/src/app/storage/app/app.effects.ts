@@ -31,12 +31,19 @@ export class AppEffects {
     ofType(InitAppAction),
     switchMap(() => {
 
-      const participants$ = this.http.get(environment.api + "/getSiteOptions").pipe(
+      const user = this.authService.getUser();
+
+      const queryPaerams = user
+        ? "?uid=" + user.uid
+        : "";
+
+      const participants$ = this.http.get(environment.api + "/getSiteOptions" + queryPaerams).pipe(
         map((res: any) => {
 
           return {
             // state: State.DATA,
             siteOptions: res.data,
+            user: res.user,
           };
         })
       );

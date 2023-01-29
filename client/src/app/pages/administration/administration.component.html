@@ -10,7 +10,8 @@
   <div class="col-1"></div>
   <div class="col-10">
     <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-      <li [ngbNavItem]="'siteView'">
+      <li [ngbNavItem]="'siteView'"
+        *ngIf="roleService.can$(Roles.Admin) | async">
         <a ngbNavLink>Site View Property</a>
         <ng-template ngbNavContent>
 
@@ -120,7 +121,8 @@
         </ng-template>
       </li>
 
-      <li [ngbNavItem]="'users'">
+      <li [ngbNavItem]="'users'"
+        *ngIf="roleService.can$(Roles.SuperAdmin) | async">
         <a ngbNavLink>Users</a>
         <ng-template ngbNavContent>
           <users [users]="users$ | async" (init)="initUsers()" (updateUser)="updateUser($event)"></users>
