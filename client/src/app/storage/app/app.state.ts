@@ -10,6 +10,12 @@ export interface IUserInfo {
   email: string;
   role: number;
   id: string;
+  firstName: string;
+  lastName: string;
+  phone: string,
+  organization: string,
+  googleAcademy: string,
+  orcid: string,
 }
 
 export class AppState {

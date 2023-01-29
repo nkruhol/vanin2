@@ -11,3 +11,12 @@ export const UpdateUserInfoAction = createAction(
   "[Cabinet] Update User Info",
   props<{ user: IUserInfo }>(),
 );
+
+export const InitConferenceDetailsAction = createAction(
+  "[Cabinet] Init Conference Details Action",
+);
+
+export const AddNewArticleAction = createAction(
+  "[Cabinet] Ass New Article",
+  props<{ user: IUserInfo }>(),
+);

@@ -1,11 +1,16 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { Store } from "@ngrx/store";
 import { concat, of } from "rxjs";
-import { catchError, map, switchMap } from "rxjs/operators";
+import { catchError, filter, map, switchMap, withLatestFrom } from "rxjs/operators";
+import { NewArticleModalComponent } from "src/app/shared/new-article-modal/new-article-modal.component";
 import { ToastSeverity } from "src/app/shared/toasts/toast";
 import { ToastsService } from "src/app/shared/toasts/toasts.service";
 import { environment } from "src/environments/environment";
+import { selectUserInfo } from "../app/app.selectors";
+import { IStore } from "../store";
 import * as CabinetActions from "./cabinet.actions";
 import { State } from "./cabinet.state";
 
@@ -16,6 +21,8 @@ export class CabinetEffect {
     private actions$: Actions,
     private http: HttpClient,
     private toast: ToastsService,
+    private modalService: NgbModal,
+    private store: Store<IStore>,
   ) {}
 
   updateUser$ = createEffect(() => this.actions$.pipe(
@@ -39,161 +46,67 @@ export class CabinetEffect {
     map(newState => CabinetActions.ExtendStateAction({ newState })),
   ));
 
-  // init$ = createEffect(() => this.actions$.pipe(
-  //   ofType(AdministrationActions.InitAdministrationAction),
-  //   switchMap((action) => {
+  initConferenceDetails$ = createEffect(() => this.actions$.pipe(
+    ofType(CabinetActions.InitConferenceDetailsAction),
+    withLatestFrom(this.store.select(selectUserInfo)),
+    switchMap(([action, userInfo]) => {
 
-  //     const participants$ = this.http.get(environment.api + "/getSiteOptionsLayout").pipe(
-  //       map((res: any) => {
+      const qp = "?userId=" + userInfo.id + "&year=2023";
+      const articles$ = this.http.get(environment.api + "/participantsByUserId" + qp).pipe(
+        map((res: any) => {
 
-  //         return {
-  //           state: State.DATA,
-  //           layout: res.data,
-  //         };
-  //       })
-  //     );
+          return {
+            conferenceDetailsState: State.DATA,
+            articles: res.data,
+          }
+        })
+      );
 
-  //     return concat(
-  //       of({ state: State.LOADING }),
-  //       participants$,
-  //     )
-  //   }),
-  //   map(newState => AdministrationActions.ExtendStateAction({ newState })),
-  // ));
+      return concat(
+        of({ conferenceDetailsState: State.LOADING }),
+        articles$,
+      );
+    }),
+    map(newState => CabinetActions.ExtendStateAction({ newState })),
+  ))
 
-  // create$ = createEffect(() => this.actions$.pipe(
+  addNewArticle$ = createEffect(() => this.actions$.pipe(
+    ofType(CabinetActions.AddNewArticleAction),
+    switchMap(action => {
 
-  //   ofType(AdministrationActions.UpdateSiteViewOptionsAction),
-  //   switchMap(({ data }) => {
+      const modalRef = this.modalService.open(NewArticleModalComponent, {
+        size: "lg",
+      });
 
-  //     const update$ = this.http.post(environment.api + "/updateSiteOptionsLayout", data).pipe(
-  //       map(res => {
+      modalRef.componentInstance.user = action.user;
 
-  //         this.toast.showToast({
-  //           text: "Update Successful!",
-  //           severity: ToastSeverity.SUCCESS,
-  //         });
+      return modalRef.result;
+    }),
+    filter(i => !!i),
+    switchMap(res => {
 
-  //         return {
-  //           state: State.DATA,
-  //           layout: data,
-  //         };
-  //       }),
-  //       // catchError(err => {
+      console.log(res);
+      const create$ = this.http.post(environment.api + "/createParticipant/2023", res).pipe(
+        map((res: any) => {
 
-  //       //   this.toast.showToast({
-  //       //     text: err.message,
-  //       //     severity: ToastSeverity.DANGER,
-  //       //   });
+          this.toast.showToast({
+            text: "Регистрация успешна!",
+            severity: ToastSeverity.SUCCESS,
+          });
 
-  //       //   return of({ state: State.DATA });
-  //       // }),
-  //     );
+          return {
+            conferenceDetailsState: State.DATA,
+            articles: res.data,
+            currentArticle: res.data.filter(i => i.id == res.createdArticleId)[0],
+          };
+        }),
+      );
 
-  //     return concat(
-  //       of({ state: State.LOADING }),
-  //       update$,
-  //     )
-  //   }),
-  //   map(newState => AdministrationActions.ExtendStateAction({ newState })),
-  // ))
-
-  // initPagesEdit$ = createEffect(() => this.actions$.pipe(
-  //   ofType(AdministrationActions.InitPagesEditAction),
-  //   switchMap((action) => {
-
-  //     const pages$ = this.http.get(environment.api + "/getSiteOptionsPages").pipe(
-  //       map((res: any) => {
-
-  //         return {
-  //           state: State.DATA,
-  //           pages: res.data,
-  //         };
-  //       })
-  //     );
-
-  //     return concat(
-  //       of({ state: State.LOADING }),
-  //       pages$,
-  //     )
-  //   }),
-  //   map(newState => AdministrationActions.ExtendStateAction({ newState })),
-  // ));
-
-  // updatePagesEdit$ = createEffect(() => this.actions$.pipe(
-
-  //   ofType(AdministrationActions.UpdatePagesEditAction),
-  //   switchMap(({ pages }) => {
-
-  //     const update$ = this.http.post(environment.api + "/updateSiteOptionsPages", pages).pipe(
-  //       map(res => {
-
-  //         this.toast.showToast({
-  //           text: "Update Successful!",
-  //           severity: ToastSeverity.SUCCESS,
-  //         });
-
-  //         return {
-  //           state: State.DATA,
-  //           pages,
-  //         };
-  //       }),
-  //       // catchError(err => {
-
-  //       //   this.toast.showToast({
-  //       //     text: err.message,
-  //       //     severity: ToastSeverity.DANGER,
-  //       //   });
-
-  //       //   return of({ state: State.DATA });
-  //       // }),
-  //     );
-
-  //     return concat(
-  //       of({ state: State.LOADING }),
-  //       update$,
-  //     )
-  //   }),
-  //   map(newState => AdministrationActions.ExtendStateAction({ newState })),
-  // ))
-
-  // initUsers$ = createEffect(() => this.actions$.pipe(
-  //   ofType(AdministrationActions.InitUsersAction),
-  //   switchMap((action) => {
-
-  //     const users$ = this.http.get(environment.api + "/getUsers").pipe(
-  //       map((res: any) => {
-
-  //         return {
-  //           state: State.DATA,
-  //           users: res.users,
-  //         };
-  //       })
-  //     );
-
-  //     return concat(
-  //       of({ state: State.LOADING }),
-  //       users$,
-  //     )
-  //   }),
-  //   map(newState => AdministrationActions.ExtendStateAction({ newState })),
-  // ));
-
-  // updateUser$ = createEffect(() => this.actions$.pipe(
-  //   ofType(AdministrationActions.UpdateUserAction),
-  //   switchMap((action) => {
-
-  //     return this.http.post(environment.api + "/updateUser", action.user).pipe(
-  //       map((res: any) => {
-
-  //         return {
-  //           state: State.DATA,
-  //           users: res.users,
-  //         };
-  //       })
-  //     );
-  //   }),
-  //   map(newState => AdministrationActions.InitUsersAction()),
-  // ));
-
+      return concat(
+        of({ conferenceDetailsState: State.CREATING }),
+        create$,    
+      )
+    }),
+    map(newState => CabinetActions.ExtendStateAction({ newState })),
+  ))
 }

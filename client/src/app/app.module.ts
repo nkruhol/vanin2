@@ -39,6 +39,8 @@ import { UsersComponent } from './pages/administration/users/users.component';
 import { RegistrationModalComponent } from './shared/registration-modal/registration-modal.component';
 import { CabinetComponent } from './pages/cabinet/cabinet.component';
 import { UserInfoComponent } from './pages/cabinet/user-info/user-info.component';
+import { UserParticipantComponent } from './pages/cabinet/user-participant/user-participant.component';
+import { NewArticleModalComponent } from './shared/new-article-modal/new-article-modal.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -66,6 +68,8 @@ export function createTranslateLoader(http: HttpClient) {
     RegistrationModalComponent,
     CabinetComponent,
     UserInfoComponent,
+    UserParticipantComponent,
+    NewArticleModalComponent,
   ],
   imports: [
     BrowserModule,

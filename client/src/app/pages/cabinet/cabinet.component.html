@@ -6,7 +6,7 @@
   <div class="col-1"></div>
 </div>
 
-<div class="row">
+<div class="row" *ngIf="!!(user$ | async)">
   <div class="col-1"></div>
   <div class="col-10">
     <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
@@ -25,7 +25,15 @@
       <li [ngbNavItem]="'conferenceDetails'">
         <a ngbNavLink>{{ "CABINET.CONFERENCE_DETAILS" | translate }}</a>
         <ng-template ngbNavContent>
-
+          <div *ngIf="!(user$ | async)"> LOADING </div>
+          <user-participant *ngIf="!!(user$ | async)"
+            [user]="user$ | async"
+            [state]="conferenceDetailsState$ | async"
+            [articles]="articles$ | async"
+            [currentArticle]="currentArticle$ | async"
+            (init)="conferenceDetailsInit()"
+            (add)="addNewArticle($event)">
+          </user-participant>
         </ng-template>
       </li>
 

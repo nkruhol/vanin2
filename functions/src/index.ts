@@ -47,10 +47,50 @@ export const createParticipant = functions.https.onRequest((request, response) =
 
     database.ref("participants-" + request.params[0]).push(request.body).then((res: any) => {
 
-      response.send(JSON.stringify({ ok: true }));
+      return database.ref("participants-" + request.params[0])
+        .orderByChild("userId")
+        .startAt(request.body.userId)
+        .endAt(request.body.userId)
+        .once("value")
+        .then(dbArticles => {
+
+          let children: any = [];
+          dbArticles.forEach(child_snap => {
+              
+              children.push({ ...child_snap.val(), id: child_snap.key });
+          });
+
+          response.send(JSON.stringify({ ok: true, data: children, createdArticleId: res.key }));
+        })
     });
   })
 });
+
+
+export const participantsByUserId = functions.https.onRequest((request, response) => {
+
+  cors1(request, response, () => {
+
+    database.ref("participants-" + request.params[0]).push(request.body).then((res: any) => {
+
+      return database.ref("participants-" + request.query.year)
+        .orderByChild("userId")
+        .startAt(request.query.userId as string)
+        .endAt(request.query.userId as string)
+        .once("value")
+        .then(dbArticles => {
+
+          let children: any = [];
+          dbArticles.forEach(child_snap => {
+              
+              children.push({ ...child_snap.val(), id: child_snap.key });
+          });
+
+          response.send(JSON.stringify({ ok: true, data: children }));
+        })
+    });
+  })
+})
 
 export const participants = functions.https.onRequest((request, response) => {
 
