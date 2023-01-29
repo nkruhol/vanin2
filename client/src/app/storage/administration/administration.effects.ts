@@ -145,7 +145,7 @@ export class AdministrationEffect {
 
           return {
             state: State.DATA,
-            users: res.data,
+            users: res.users,
           };
         })
       );
@@ -156,6 +156,23 @@ export class AdministrationEffect {
       )
     }),
     map(newState => AdministrationActions.ExtendStateAction({ newState })),
+  ));
+
+  updateUser$ = createEffect(() => this.actions$.pipe(
+    ofType(AdministrationActions.UpdateUserAction),
+    switchMap((action) => {
+
+      return this.http.post(environment.api + "/updateUser", action.user).pipe(
+        map((res: any) => {
+
+          return {
+            state: State.DATA,
+            users: res.users,
+          };
+        })
+      );
+    }),
+    map(newState => AdministrationActions.InitUsersAction()),
   ));
 
 }

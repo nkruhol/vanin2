@@ -60,24 +60,53 @@ export const getUsers = functions.https.onRequest((request, response) => {
 
   cors1(request, response, () => {
 
-    auth.listUsers().then(userRecords => {
+    Promise.all([
+      auth.listUsers(),
+      database.ref('users').once('value'),
+    ]).then(([userRecords, dbUsers]) => {
 
-      userRecords.users.forEach((user) => console.log(user.toJSON()));
+      let children: any = [];
+      dbUsers.forEach(child_snap => {
+          
+          children.push({ ...child_snap.val(), id: child_snap.key });
+      });
 
-      const users = userRecords.users.map(i => ({
-        uid: i.uid,
-        email: i.email,
-      }))
+      const users = userRecords.users.map(i => {
+
+        const user = children.filter(j => j.uid == i.uid)[0];
+        
+        return {
+          uid: i.uid,
+          email: i.email,
+          ...user,
+        };
+      });
+
       response.send(JSON.stringify({ ok: true, users }))
     });
+  })
+});
+
+export const updateUser = functions.https.onRequest((request, response) => {
+
+  cors1(request, response, () => {
+
+    const user = request.body;
+
+    database.ref("users/" + request.body.id).set(user)
+        .then(() => {
+
+            response.send(JSON.stringify({ ok: true }));
+        }, err => {
+
+            response.status(500).send(JSON.stringify({ err }));
+        });
   })
 });
 
 export const registration = functions.https.onRequest((request, response) => {
 
   cors1(request, response, () => {
-
-    console.log('-----hello workd======', request.body);
 
     auth.createUser(request.body)
       .then(newUser => {

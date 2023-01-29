@@ -17,3 +17,8 @@ export const selectState = createSelector(
   administrationState,
   i => i.state,
 );
+
+export const selectUsers = createSelector(
+  administrationState,
+  i => i.users,
+);

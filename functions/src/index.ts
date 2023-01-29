@@ -21,6 +21,7 @@ export const updateSiteOptionsPages = AdministrationController.updateSiteOptions
 
 export const getUsers = AdministrationController.getUsers;
 export const registration = AdministrationController.registration;
+export const updateUser = AdministrationController.updateUser;
 
 // todo
 

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { filter } from 'rxjs/operators';
-import { InitAdministrationAction, InitPagesEditAction, InitUsersAction, UpdatePagesEditAction, UpdateSiteViewOptionsAction } from 'src/app/storage/administration/administration.actions';
-import { selectLayout, selectPages, selectState } from 'src/app/storage/administration/administration.selectors';
+import { filter, tap } from 'rxjs/operators';
+import { RoleService } from 'src/app/services/roles.service';
+import { InitAdministrationAction, InitPagesEditAction, InitUsersAction, UpdatePagesEditAction, UpdateSiteViewOptionsAction, UpdateUserAction } from 'src/app/storage/administration/administration.actions';
+import { selectLayout, selectPages, selectState, selectUsers } from 'src/app/storage/administration/administration.selectors';
+import { Roles } from 'src/app/storage/administration/administration.state';
 import { IStore } from "src/app/storage/store";
 
 @Component({
@@ -16,13 +18,16 @@ export class AdministrationComponent implements OnInit {
   state$ = this.store.select(selectState);
   layout$ = this.store.select(selectLayout);
   pages$ = this.store.select(selectPages);
+  users$ = this.store.select(selectUsers);
 
   constructor(
     private fb: FormBuilder,
     private store: Store<IStore>,
+    public roleService: RoleService,
   ) {}
 
   active: string;
+  Roles = Roles;
 
   siteViewForm = this.fb.group({
     history: [null],
@@ -67,5 +72,10 @@ export class AdministrationComponent implements OnInit {
   initUsers() {
 
     this.store.dispatch(InitUsersAction());
+  }
+
+  updateUser(user) {
+
+    this.store.dispatch(UpdateUserAction({ user }));
   }
 }

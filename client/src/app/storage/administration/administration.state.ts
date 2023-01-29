@@ -29,9 +29,23 @@ export enum State {
   DATA,
 };
 
+export enum Roles {
+  SuperAdmin = 1,
+  Admin = 1 << 1,
+  Reviewer = 1 << 2,
+  User = 1 << 3,
+}
+
+export interface IUser {
+  email: string;
+  uid: string;
+  id: string;
+  role: number;
+}
+
 export class AdministrationState {
   state = State.NO_DATA;
   layout: ILayout;
   pages: IPages;
-  users: any[];
+  users: IUser[];
 }

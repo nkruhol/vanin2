@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { filter } from 'rxjs/operators';
 import { InitAdministrationAction, UpdateSiteViewOptionsAction } from 'src/app/storage/administration/administration.actions';
 import { selectLayout, selectState } from 'src/app/storage/administration/administration.selectors';
-import { IPages } from 'src/app/storage/administration/administration.state';
+import { IPages, IUser, Roles } from 'src/app/storage/administration/administration.state';
 import { IStore } from "src/app/storage/store";
 
 @Component({
@@ -12,17 +12,15 @@ import { IStore } from "src/app/storage/store";
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnChanges {
 
-  // @Input() pages: IPages;
+  @Input() users: IUser[];
   @Output() init = new EventEmitter();
+  @Output() updateUser = new EventEmitter<IUser>()
   // @Output() update = new EventEmitter<IPages>();
 
-  // pagesArr: string[] = [];
-  // pageLanguagesArr: string[] = [];
-  // currentPage: string = '';
-  // currentLanguage: string = '';
-  // currentPageText: string = '';
+
+  Roles = Roles;
 
   constructor(
     // private fb: FormBuilder,
@@ -47,39 +45,35 @@ export class UsersComponent implements OnInit {
     // })
   }
 
-  // ngOnChanges(changes: SimpleChanges): void {
-    
-    
+  ngOnChanges() {
 
-  //   if (changes.pages.currentValue) {
+    console.log(777, this.users);
 
-  //     this.pagesArr = Object.keys(changes.pages.currentValue);
-  //     this.currentPage = 'start';
-  //     this.onCurrentPageSelect();
-  //   }
-  // }
+    if (!this.users) {
 
-  // onCurrentPageSelect() {
+      
+    }
+  }
 
-  //   console.log('currentPage', this.currentPage);
+  initRole(role: Roles, user: IUser) {
 
-  //   this.pageLanguagesArr = Object.keys(this.pages[this.currentPage]);
-  //   this.currentLanguage = 'ua';
-  //   this.currentPageText = this.pages[this.currentPage][this.currentLanguage];
-  // }
+    return (user.role & role) === role;
+  }
 
-  // onCurrentLanguageSelect() {
+  updateRole(value: boolean, role: Roles, user: IUser) {
 
-  //   this.currentPageText = this.pages[this.currentPage][this.currentLanguage];
-  // }
+    const role2 = [
+      Roles.SuperAdmin,
+      Roles.Admin,
+      Roles.Reviewer,
+      Roles.User,
+    ].map(i => (i == role) ? +value : +this.initRole(i, user))
+      .reverse()
+      .join('');
 
-  // onUpdate() {
-
-  //   const pages: any = { ...this.pages };
-  //   pages[this.currentPage] = { ...pages[this.currentPage] };
-  //   pages[this.currentPage][this.currentLanguage] = this.currentPageText;
-
-  //   this.update.emit(pages);
-  // }
-
+    this.updateUser.emit({
+      ...user,
+      role: parseInt(role2, 2) 
+    });
+  }
 }

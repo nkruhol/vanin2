@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { AdministrationState, ILayout, IPages } from "./administration.state";
+import { AdministrationState, ILayout, IPages, IUser } from "./administration.state";
 
 export const ExtendStateAction = createAction(
   "[Administration] Extend State",
@@ -27,4 +27,9 @@ export const UpdatePagesEditAction = createAction(
 
 export const InitUsersAction = createAction(
   "[Administration] Init Users",
+);
+
+export const UpdateUserAction = createAction(
+  "[Administration] Update User",
+  props<{ user: IUser }>(),
 );

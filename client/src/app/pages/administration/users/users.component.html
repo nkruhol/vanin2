@@ -1,37 +1,45 @@
-<!-- <div class="row">
-  <div class="col-3">
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Page</label>
-      </div>
-      <select class="custom-select"
-        id="inputGroupSelect01"
-        [(ngModel)]="currentPage"
-        (change)="onCurrentPageSelect()">
-        <option *ngFor="let page of pagesArr" [value]="page">{{ page }}</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="col-3">
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Language</label>
-      </div>
-      <select class="custom-select"
-        id="inputGroupSelect01"
-        [(ngModel)]="currentLanguage"
-        (change)="onCurrentLanguageSelect()">
-        <option *ngFor="let lang of pageLanguagesArr" [value]="lang">{{ lang }}</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="col-3">
-    <button class="btn btn-primary" (click)="onUpdate()">Update</button>
+<div class="row">
+  <div class="col-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">User</th>
+          <th scope="col" class="header-text">SuperAdmin</th>
+          <th scope="col" class="header-text">Admin</th>
+          <th scope="col" class="header-text">Reviewer</th>
+          <th scope="col" class="header-text">User</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td scope="row">{{ user.email }}</td>
+          <td class="text-center">
+            <input type="checkbox"
+              id="superAdmin"
+              [ngModel]="initRole(Roles.SuperAdmin, user)"
+              (ngModelChange)="updateRole($event, Roles.SuperAdmin, user)">
+          </td>
+          <td class="text-center">
+            <input type="checkbox"
+              id="admin"
+              [ngModel]="initRole(Roles.Admin, user)"
+              (ngModelChange)="updateRole($event, Roles.Admin, user)">
+          </td>
+          <td class="text-center">
+            <input type="checkbox"
+              id="reviewer"
+              [ngModel]="initRole(Roles.Reviewer, user)"
+              (ngModelChange)="updateRole($event, Roles.Reviewer, user)">
+          </td>
+          <td class="text-center">
+            <input type="checkbox"
+              id="user"
+              [ngModel]="initRole(Roles.User, user)"
+              (ngModelChange)="updateRole($event, Roles.User, user)">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
   </div>
 </div>
-
-<div *ngIf="currentPage && currentLanguage">
-  <angular-editor [(ngModel)]="currentPageText" [config]="editorConfig"></angular-editor>
-</div> -->
